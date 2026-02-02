@@ -1,9 +1,8 @@
 {
   "name": "design2code",
-  "lastUpdated": "2026-02-02T11:14:17.088939Z",
+  "lastUpdated": "2026-02-02T16:04:17.978412Z",
   "results": [
     {
-      "rank": 1,
       "dataset": "design2code",
       "method": "direct",
       "model": "Gemini-3-Pro-Preview",
@@ -23,7 +22,6 @@
       "run_id": "design2code_direct_gemini-3-pro-preview_20260110_030925"
     },
     {
-      "rank": 2,
       "dataset": "design2code",
       "method": "direct",
       "model": "GPT-4.1",
@@ -42,7 +40,6 @@
       "run_id": "design2code_direct_gpt-4-1_20260110_122031"
     },
     {
-      "rank": 3,
       "dataset": "design2code",
       "method": "direct",
       "model": "Claude-3.7-Sonnet",
@@ -61,7 +58,6 @@
       "run_id": "design2code_direct_claude-3-7-sonnet-20250219_20260118_012948"
     },
     {
-      "rank": 4,
       "dataset": "design2code",
       "method": "dcgen",
       "model": "GPT-4.1",
@@ -80,7 +76,6 @@
       "run_id": "design2code_dcgen_gpt-4-1_20260110_122016"
     },
     {
-      "rank": 5,
       "dataset": "design2code",
       "method": "direct",
       "model": "Claude-Opus-4.5",
@@ -100,7 +95,6 @@
       "run_id": "design2code_direct_claude-opus-4-5-20251101_20260124_031629"
     },
     {
-      "rank": 6,
       "dataset": "design2code",
       "method": "direct",
       "model": "Qwen3-VL-235B",
@@ -118,7 +112,6 @@
       "run_id": "design2code_direct_qwen-qwen3-vl-235b-a22b_20260129_021347"
     },
     {
-      "rank": 7,
       "dataset": "design2code",
       "method": "direct",
       "model": "Gemini-2.5-Pro",
@@ -138,7 +131,6 @@
       "run_id": "design2code_direct_gemini-2-5-pro_20260101_162109"
     },
     {
-      "rank": 8,
       "dataset": "design2code",
       "method": "direct",
       "model": "Gemini-2.0-Flash",
@@ -158,7 +150,6 @@
       "run_id": "design2code_direct_gemini-2-0-flash_20260101_161754"
     },
     {
-      "rank": 9,
       "dataset": "design2code",
       "method": "direct",
       "model": "GPT-4o",
@@ -177,7 +168,6 @@
       "run_id": "design2code_direct_gpt-4o_20260102_094907"
     },
     {
-      "rank": 10,
       "dataset": "design2code",
       "method": "direct",
       "model": "Gemini-2.5-Flash",
@@ -197,7 +187,6 @@
       "run_id": "design2code_direct_gemini-2-5-flash_20260109_140638"
     },
     {
-      "rank": 11,
       "dataset": "design2code",
       "method": "direct",
       "model": "Mistral-Large-3",
@@ -215,7 +204,6 @@
       "run_id": "design2code_direct_mistral-mistral-large-3-675b-instruct_20260128_074216"
     },
     {
-      "rank": 12,
       "dataset": "design2code",
       "method": "direct",
       "model": "Gemini-2.0-Flash-Lite",
@@ -236,7 +224,6 @@
       "run_id": "design2code_direct_gemini-2-0-flash-lite_20260110_074131"
     },
     {
-      "rank": 13,
       "dataset": "design2code",
       "method": "dcgen",
       "model": "GPT-4o",
@@ -255,7 +242,6 @@
       "run_id": "design2code_dcgen_gpt-4o_20260102_094946"
     },
     {
-      "rank": 14,
       "dataset": "design2code",
       "method": "direct",
       "model": "Grok-4",
@@ -273,7 +259,6 @@
       "run_id": "design2code_direct_grok-4_20260123_044312"
     },
     {
-      "rank": 15,
       "dataset": "design2code",
       "method": "direct",
       "model": "Llama4-Maverick-17B",
@@ -291,7 +276,6 @@
       "run_id": "design2code_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260128_033016"
     },
     {
-      "rank": 16,
       "dataset": "design2code",
       "method": "direct",
       "model": "Doubao-1.5-Vision-Pro",
@@ -310,7 +294,6 @@
       "run_id": "design2code_direct_doubao-1-5-vision-pro-32k-250115_20260115_042635"
     },
     {
-      "rank": 17,
       "dataset": "design2code",
       "method": "direct",
       "model": "Gemini-2.5-Flash-Lite",
