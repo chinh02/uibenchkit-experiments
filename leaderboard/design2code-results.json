@@ -1,0 +1,334 @@
+{
+  "name": "design2code",
+  "lastUpdated": "2026-02-02T08:36:28.077670Z",
+  "results": [
+    {
+      "rank": 1,
+      "dataset": "design2code",
+      "method": "direct",
+      "model": "Gemini-3-Pro-Preview",
+      "code_similarity": "19.90%",
+      "clip": "84.85%",
+      "block_match": "90.72%",
+      "text": "95.04%",
+      "position": "88.43%",
+      "color": "88.46%",
+      "fg_clip": "90.28%",
+      "org": "Google",
+      "tags": [
+        "direct",
+        "Gemini",
+        "Pro"
+      ],
+      "run_id": "design2code_direct_gemini-3-pro-preview_20260110_030925"
+    },
+    {
+      "rank": 2,
+      "dataset": "design2code",
+      "method": "direct",
+      "model": "GPT-4.1",
+      "code_similarity": "16.71%",
+      "clip": "83.38%",
+      "block_match": "94.01%",
+      "text": "98.46%",
+      "position": "89.97%",
+      "color": "88.17%",
+      "fg_clip": "89.43%",
+      "org": "OpenAI",
+      "tags": [
+        "direct",
+        "GPT"
+      ],
+      "run_id": "design2code_direct_gpt-4-1_20260110_122031"
+    },
+    {
+      "rank": 3,
+      "dataset": "design2code",
+      "method": "direct",
+      "model": "Claude-3.7-Sonnet",
+      "code_similarity": "17.95%",
+      "clip": "82.87%",
+      "block_match": "93.65%",
+      "text": "98.37%",
+      "position": "90.04%",
+      "color": "89.37%",
+      "fg_clip": "89.23%",
+      "org": "Anthropic",
+      "tags": [
+        "direct",
+        "Claude"
+      ],
+      "run_id": "design2code_direct_claude-3-7-sonnet-20250219_20260118_012948"
+    },
+    {
+      "rank": 4,
+      "dataset": "design2code",
+      "method": "dcgen",
+      "model": "GPT-4.1",
+      "code_similarity": "20.19%",
+      "clip": "82.85%",
+      "block_match": "81.34%",
+      "text": "87.93%",
+      "position": "82.42%",
+      "color": "81.80%",
+      "fg_clip": "89.06%",
+      "org": "OpenAI",
+      "tags": [
+        "dcgen",
+        "GPT"
+      ],
+      "run_id": "design2code_dcgen_gpt-4-1_20260110_122016"
+    },
+    {
+      "rank": 5,
+      "dataset": "design2code",
+      "method": "direct",
+      "model": "Claude-Opus-4.5",
+      "code_similarity": "18.21%",
+      "clip": "82.73%",
+      "block_match": "95.05%",
+      "text": "98.78%",
+      "position": "91.63%",
+      "color": "83.54%",
+      "fg_clip": "88.04%",
+      "org": "Anthropic",
+      "tags": [
+        "direct",
+        "Claude",
+        "Pro"
+      ],
+      "run_id": "design2code_direct_claude-opus-4-5-20251101_20260124_031629"
+    },
+    {
+      "rank": 6,
+      "dataset": "design2code",
+      "method": "direct",
+      "model": "Qwen3-VL-235B",
+      "code_similarity": "17.78%",
+      "clip": "82.02%",
+      "block_match": "92.94%",
+      "text": "96.86%",
+      "position": "87.51%",
+      "color": "86.26%",
+      "fg_clip": "88.58%",
+      "org": "Alibaba",
+      "tags": [
+        "direct"
+      ],
+      "run_id": "design2code_direct_qwen-qwen3-vl-235b-a22b_20260129_021347"
+    },
+    {
+      "rank": 7,
+      "dataset": "design2code",
+      "method": "direct",
+      "model": "Gemini-2.5-Pro",
+      "code_similarity": "17.71%",
+      "clip": "81.72%",
+      "block_match": "85.92%",
+      "text": "93.17%",
+      "position": "83.73%",
+      "color": "82.57%",
+      "fg_clip": "88.66%",
+      "org": "Google",
+      "tags": [
+        "direct",
+        "Gemini",
+        "Pro"
+      ],
+      "run_id": "design2code_direct_gemini-2-5-pro_20260101_162109"
+    },
+    {
+      "rank": 8,
+      "dataset": "design2code",
+      "method": "direct",
+      "model": "Gemini-2.0-Flash",
+      "code_similarity": "16.60%",
+      "clip": "79.93%",
+      "block_match": "90.13%",
+      "text": "95.22%",
+      "position": "83.42%",
+      "color": "80.11%",
+      "fg_clip": "87.00%",
+      "org": "Google",
+      "tags": [
+        "direct",
+        "Gemini",
+        "Fast"
+      ],
+      "run_id": "design2code_direct_gemini-2-0-flash_20260101_161754"
+    },
+    {
+      "rank": 9,
+      "dataset": "design2code",
+      "method": "direct",
+      "model": "GPT-4o",
+      "code_similarity": "14.81%",
+      "clip": "79.83%",
+      "block_match": "89.03%",
+      "text": "95.67%",
+      "position": "83.65%",
+      "color": "81.29%",
+      "fg_clip": "87.12%",
+      "org": "OpenAI",
+      "tags": [
+        "direct",
+        "GPT"
+      ],
+      "run_id": "design2code_direct_gpt-4o_20260102_094907"
+    },
+    {
+      "rank": 10,
+      "dataset": "design2code",
+      "method": "direct",
+      "model": "Gemini-2.5-Flash",
+      "code_similarity": "17.44%",
+      "clip": "79.76%",
+      "block_match": "78.46%",
+      "text": "87.37%",
+      "position": "77.59%",
+      "color": "50.74%",
+      "fg_clip": "84.95%",
+      "org": "Google",
+      "tags": [
+        "direct",
+        "Gemini",
+        "Fast"
+      ],
+      "run_id": "design2code_direct_gemini-2-5-flash_20260109_140638"
+    },
+    {
+      "rank": 11,
+      "dataset": "design2code",
+      "method": "direct",
+      "model": "Mistral-Large-3",
+      "code_similarity": "17.24%",
+      "clip": "78.86%",
+      "block_match": "87.25%",
+      "text": "92.58%",
+      "position": "80.41%",
+      "color": "73.69%",
+      "fg_clip": "85.66%",
+      "org": "Mistral AI",
+      "tags": [
+        "direct"
+      ],
+      "run_id": "design2code_direct_mistral-mistral-large-3-675b-instruct_20260128_074216"
+    },
+    {
+      "rank": 12,
+      "dataset": "design2code",
+      "method": "direct",
+      "model": "Gemini-2.0-Flash-Lite",
+      "code_similarity": "16.23%",
+      "clip": "78.38%",
+      "block_match": "87.36%",
+      "text": "92.61%",
+      "position": "78.96%",
+      "color": "75.51%",
+      "fg_clip": "86.61%",
+      "org": "Google",
+      "tags": [
+        "direct",
+        "Gemini",
+        "Fast",
+        "Lite"
+      ],
+      "run_id": "design2code_direct_gemini-2-0-flash-lite_20260110_074131"
+    },
+    {
+      "rank": 13,
+      "dataset": "design2code",
+      "method": "dcgen",
+      "model": "GPT-4o",
+      "code_similarity": "18.97%",
+      "clip": "78.38%",
+      "block_match": "75.57%",
+      "text": "83.55%",
+      "position": "73.92%",
+      "color": "74.03%",
+      "fg_clip": "85.49%",
+      "org": "OpenAI",
+      "tags": [
+        "dcgen",
+        "GPT"
+      ],
+      "run_id": "design2code_dcgen_gpt-4o_20260102_094946"
+    },
+    {
+      "rank": 14,
+      "dataset": "design2code",
+      "method": "direct",
+      "model": "Grok-4",
+      "code_similarity": "12.36%",
+      "clip": "78.32%",
+      "block_match": "59.70%",
+      "text": "86.33%",
+      "position": "80.23%",
+      "color": "77.15%",
+      "fg_clip": "86.93%",
+      "org": "xAI",
+      "tags": [
+        "direct"
+      ],
+      "run_id": "design2code_direct_grok-4_20260123_044312"
+    },
+    {
+      "rank": 15,
+      "dataset": "design2code",
+      "method": "direct",
+      "model": "Llama4-Maverick-17B",
+      "code_similarity": "13.20%",
+      "clip": "77.97%",
+      "block_match": "79.93%",
+      "text": "91.34%",
+      "position": "77.13%",
+      "color": "71.79%",
+      "fg_clip": "85.59%",
+      "org": "Meta",
+      "tags": [
+        "direct"
+      ],
+      "run_id": "design2code_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260128_033016"
+    },
+    {
+      "rank": 16,
+      "dataset": "design2code",
+      "method": "direct",
+      "model": "Doubao-1.5-Vision-Pro",
+      "code_similarity": "15.18%",
+      "clip": "77.21%",
+      "block_match": "91.00%",
+      "text": "97.14%",
+      "position": "80.87%",
+      "color": "78.27%",
+      "fg_clip": "86.35%",
+      "org": "ByteDance",
+      "tags": [
+        "direct",
+        "Pro"
+      ],
+      "run_id": "design2code_direct_doubao-1-5-vision-pro-32k-250115_20260115_042635"
+    },
+    {
+      "rank": 17,
+      "dataset": "design2code",
+      "method": "direct",
+      "model": "Gemini-2.5-Flash-Lite",
+      "code_similarity": "15.59%",
+      "clip": "72.40%",
+      "block_match": "4.48%",
+      "text": "4.81%",
+      "position": "3.13%",
+      "color": "2.36%",
+      "fg_clip": "73.05%",
+      "org": "Google",
+      "tags": [
+        "direct",
+        "Gemini",
+        "Fast",
+        "Lite"
+      ],
+      "run_id": "design2code_direct_gemini-2-5-flash-lite_20260110_060755"
+    }
+  ]
+}

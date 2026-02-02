@@ -1,0 +1,276 @@
+{
+  "name": "dcgen",
+  "lastUpdated": "2026-02-02T08:36:28.075989Z",
+  "results": [
+    {
+      "rank": 1,
+      "dataset": "dcgen",
+      "method": "direct",
+      "model": "Gemini-3-Pro-Preview",
+      "code_similarity": "15.54%",
+      "clip": "89.86%",
+      "block_match": "-",
+      "text": "-",
+      "position": "-",
+      "color": "-",
+      "fg_clip": "-",
+      "org": "Google",
+      "tags": [
+        "direct",
+        "Gemini",
+        "Pro"
+      ],
+      "run_id": "dcgen_direct_gemini-3-pro-preview_20260110_030916"
+    },
+    {
+      "rank": 2,
+      "dataset": "dcgen",
+      "method": "direct",
+      "model": "Claude-3.7-Sonnet",
+      "code_similarity": "14.51%",
+      "clip": "87.43%",
+      "block_match": "70.31%",
+      "text": "88.71%",
+      "position": "80.89%",
+      "color": "79.18%",
+      "fg_clip": "90.12%",
+      "org": "Anthropic",
+      "tags": [
+        "direct",
+        "Claude"
+      ],
+      "run_id": "dcgen_direct_claude-3-7-sonnet-20250219_20260117_025333"
+    },
+    {
+      "rank": 3,
+      "dataset": "dcgen",
+      "method": "direct",
+      "model": "GPT-4.1",
+      "code_similarity": "12.51%",
+      "clip": "87.33%",
+      "block_match": "-",
+      "text": "-",
+      "position": "-",
+      "color": "-",
+      "fg_clip": "-",
+      "org": "OpenAI",
+      "tags": [
+        "direct",
+        "GPT"
+      ],
+      "run_id": "dcgen_direct_gpt-4-1_20260107_023030"
+    },
+    {
+      "rank": 4,
+      "dataset": "dcgen",
+      "method": "direct",
+      "model": "Claude-Opus-4.5",
+      "code_similarity": "15.56%",
+      "clip": "86.41%",
+      "block_match": "81.79%",
+      "text": "92.58%",
+      "position": "86.71%",
+      "color": "76.18%",
+      "fg_clip": "89.54%",
+      "org": "Anthropic",
+      "tags": [
+        "direct",
+        "Claude",
+        "Pro"
+      ],
+      "run_id": "dcgen_direct_claude-opus-4-5-20251101_20260125_005010"
+    },
+    {
+      "rank": 5,
+      "dataset": "dcgen",
+      "method": "dcgen",
+      "model": "GPT-4.1",
+      "code_similarity": "18.41%",
+      "clip": "84.88%",
+      "block_match": "76.53%",
+      "text": "87.72%",
+      "position": "79.85%",
+      "color": "77.63%",
+      "fg_clip": "89.89%",
+      "org": "OpenAI",
+      "tags": [
+        "dcgen",
+        "GPT"
+      ],
+      "run_id": "dcgen_dcgen_gpt-4-1_20260107_023020"
+    },
+    {
+      "rank": 6,
+      "dataset": "dcgen",
+      "method": "dcgen",
+      "model": "GPT-4o",
+      "code_similarity": "16.09%",
+      "clip": "83.90%",
+      "block_match": "67.90%",
+      "text": "83.40%",
+      "position": "73.60%",
+      "color": "71.47%",
+      "fg_clip": "87.58%",
+      "org": "OpenAI",
+      "tags": [
+        "dcgen",
+        "GPT"
+      ],
+      "run_id": "dcgen_dcgen_gpt-4o_20260106_060400"
+    },
+    {
+      "rank": 7,
+      "dataset": "dcgen",
+      "method": "direct",
+      "model": "Gemini-2.0-Flash-Lite",
+      "code_similarity": "13.70%",
+      "clip": "83.82%",
+      "block_match": "78.56%",
+      "text": "91.97%",
+      "position": "77.33%",
+      "color": "73.52%",
+      "fg_clip": "88.51%",
+      "org": "Google",
+      "tags": [
+        "direct",
+        "Gemini",
+        "Fast",
+        "Lite"
+      ],
+      "run_id": "dcgen_direct_gemini-2-0-flash-lite_20260110_074123"
+    },
+    {
+      "rank": 8,
+      "dataset": "dcgen",
+      "method": "direct",
+      "model": "Grok-4",
+      "code_similarity": "7.05%",
+      "clip": "81.16%",
+      "block_match": "23.80%",
+      "text": "63.91%",
+      "position": "53.72%",
+      "color": "60.49%",
+      "fg_clip": "87.07%",
+      "org": "xAI",
+      "tags": [
+        "direct"
+      ],
+      "run_id": "dcgen_direct_grok-4_20260121_012757"
+    },
+    {
+      "rank": 9,
+      "dataset": "dcgen",
+      "method": "direct",
+      "model": "Mistral-Large-3",
+      "code_similarity": "11.26%",
+      "clip": "80.44%",
+      "block_match": "43.12%",
+      "text": "66.76%",
+      "position": "56.73%",
+      "color": "56.83%",
+      "fg_clip": "84.26%",
+      "org": "Mistral AI",
+      "tags": [
+        "direct"
+      ],
+      "run_id": "dcgen_direct_mistral-mistral-large-3-675b-instruct_20260128_154621"
+    },
+    {
+      "rank": 10,
+      "dataset": "dcgen",
+      "method": "direct",
+      "model": "Doubao-1.5-Vision-Pro",
+      "code_similarity": "10.27%",
+      "clip": "80.04%",
+      "block_match": "63.34%",
+      "text": "85.26%",
+      "position": "70.11%",
+      "color": "63.66%",
+      "fg_clip": "84.09%",
+      "org": "ByteDance",
+      "tags": [
+        "direct",
+        "Pro"
+      ],
+      "run_id": "dcgen_direct_doubao-1-5-vision-pro-32k-250115_20260116_030003"
+    },
+    {
+      "rank": 11,
+      "dataset": "dcgen",
+      "method": "direct",
+      "model": "GPT-4o",
+      "code_similarity": "7.27%",
+      "clip": "78.48%",
+      "block_match": "-",
+      "text": "-",
+      "position": "-",
+      "color": "-",
+      "fg_clip": "-",
+      "org": "OpenAI",
+      "tags": [
+        "direct",
+        "GPT"
+      ],
+      "run_id": "dcgen_direct_gpt-4o_20260102_092937"
+    },
+    {
+      "rank": 12,
+      "dataset": "dcgen",
+      "method": "direct",
+      "model": "Llama4-Maverick-17B",
+      "code_similarity": "6.96%",
+      "clip": "77.61%",
+      "block_match": "52.77%",
+      "text": "80.24%",
+      "position": "64.82%",
+      "color": "63.39%",
+      "fg_clip": "83.69%",
+      "org": "Meta",
+      "tags": [
+        "direct"
+      ],
+      "run_id": "dcgen_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260127_074255"
+    },
+    {
+      "rank": 13,
+      "dataset": "dcgen",
+      "method": "direct",
+      "model": "Gemini-2.5-Flash",
+      "code_similarity": "5.93%",
+      "clip": "70.87%",
+      "block_match": "21.82%",
+      "text": "31.27%",
+      "position": "26.44%",
+      "color": "26.73%",
+      "fg_clip": "80.19%",
+      "org": "Google",
+      "tags": [
+        "direct",
+        "Gemini",
+        "Fast"
+      ],
+      "run_id": "dcgen_direct_gemini-2-5-flash_20260109_142354"
+    },
+    {
+      "rank": 14,
+      "dataset": "dcgen",
+      "method": "direct",
+      "model": "Gemini-2.5-Flash-Lite",
+      "code_similarity": "14.35%",
+      "clip": "70.00%",
+      "block_match": "2.57%",
+      "text": "2.92%",
+      "position": "1.97%",
+      "color": "1.40%",
+      "fg_clip": "75.31%",
+      "org": "Google",
+      "tags": [
+        "direct",
+        "Gemini",
+        "Fast",
+        "Lite"
+      ],
+      "run_id": "dcgen_direct_gemini-2-5-flash-lite_20260110_060805"
+    }
+  ]
+}
