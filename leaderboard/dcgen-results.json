@@ -1,6 +1,6 @@
 {
   "name": "dcgen",
-  "lastUpdated": "2026-03-02T15:57:38.435348Z",
+  "lastUpdated": "2026-03-02T16:13:33.126216Z",
   "results": [
     {
       "dataset": "dcgen",
@@ -38,24 +38,6 @@
         "Claude"
       ],
       "run_id": "dcgen_direct_claude-3-7-sonnet-20250219_20260117_025333"
-    },
-    {
-      "dataset": "dcgen",
-      "method": "direct",
-      "model": "GPT-4.1",
-      "code_similarity": "12.51%",
-      "clip": "87.33%",
-      "block_match": "-",
-      "text": "-",
-      "position": "-",
-      "color": "-",
-      "fg_clip": "-",
-      "org": "OpenAI",
-      "tags": [
-        "direct",
-        "GPT"
-      ],
-      "run_id": "dcgen_direct_gpt-4-1_20260107_023030"
     },
     {
       "dataset": "dcgen",
@@ -149,6 +131,24 @@
         "Lite"
       ],
       "run_id": "dcgen_direct_gemini-2-0-flash-lite_20260110_074123"
+    },
+    {
+      "dataset": "dcgen",
+      "method": "direct",
+      "model": "GPT-4.1",
+      "code_similarity": "12.49%",
+      "clip": "83.05%",
+      "block_match": "69.88%",
+      "text": "86.47%",
+      "position": "78.45%",
+      "color": "76.31%",
+      "fg_clip": "90.25%",
+      "org": "OpenAI",
+      "tags": [
+        "direct",
+        "GPT"
+      ],
+      "run_id": "dcgen_direct_gpt-4-1_20260107_023030"
     },
     {
       "dataset": "dcgen",
