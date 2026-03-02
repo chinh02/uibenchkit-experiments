@@ -1,6 +1,6 @@
 {
   "name": "dcgen",
-  "lastUpdated": "2026-02-02T16:04:17.975470Z",
+  "lastUpdated": "2026-03-02T15:57:38.435348Z",
   "results": [
     {
       "dataset": "dcgen",
@@ -56,6 +56,24 @@
         "GPT"
       ],
       "run_id": "dcgen_direct_gpt-4-1_20260107_023030"
+    },
+    {
+      "dataset": "dcgen",
+      "method": "latcoder",
+      "model": "gpt-5",
+      "code_similarity": "19.29%",
+      "clip": "86.61%",
+      "block_match": "84.84%",
+      "text": "93.59%",
+      "position": "85.77%",
+      "color": "82.36%",
+      "fg_clip": "90.71%",
+      "org": "OpenAI",
+      "tags": [
+        "latcoder",
+        "GPT"
+      ],
+      "run_id": "dcgen_latcoder_gpt-5_20260212_022005"
     },
     {
       "dataset": "dcgen",

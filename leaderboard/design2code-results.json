@@ -1,6 +1,6 @@
 {
   "name": "design2code",
-  "lastUpdated": "2026-02-02T16:04:17.978412Z",
+  "lastUpdated": "2026-03-02T15:57:38.520706Z",
   "results": [
     {
       "dataset": "design2code",
@@ -20,6 +20,24 @@
         "Pro"
       ],
       "run_id": "design2code_direct_gemini-3-pro-preview_20260110_030925"
+    },
+    {
+      "dataset": "design2code",
+      "method": "latcoder",
+      "model": "gpt-5",
+      "code_similarity": "20.63%",
+      "clip": "83.54%",
+      "block_match": "93.40%",
+      "text": "98.18%",
+      "position": "89.67%",
+      "color": "89.25%",
+      "fg_clip": "88.11%",
+      "org": "OpenAI",
+      "tags": [
+        "latcoder",
+        "GPT"
+      ],
+      "run_id": "design2code_latcoder_gpt-5_20260209_071006"
     },
     {
       "dataset": "design2code",
