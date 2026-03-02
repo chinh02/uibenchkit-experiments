@@ -1,6 +1,6 @@
 {
   "name": "dcgen",
-  "lastUpdated": "2026-03-02T16:13:33.126216Z",
+  "lastUpdated": "2026-03-02T16:22:59.149384Z",
   "results": [
     {
       "dataset": "dcgen",
@@ -205,24 +205,6 @@
     {
       "dataset": "dcgen",
       "method": "direct",
-      "model": "GPT-4o",
-      "code_similarity": "7.27%",
-      "clip": "78.48%",
-      "block_match": "-",
-      "text": "-",
-      "position": "-",
-      "color": "-",
-      "fg_clip": "-",
-      "org": "OpenAI",
-      "tags": [
-        "direct",
-        "GPT"
-      ],
-      "run_id": "dcgen_direct_gpt-4o_20260102_092937"
-    },
-    {
-      "dataset": "dcgen",
-      "method": "direct",
       "model": "Llama4-Maverick-17B",
       "code_similarity": "6.96%",
       "clip": "77.61%",
@@ -236,6 +218,24 @@
         "direct"
       ],
       "run_id": "dcgen_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260127_074255"
+    },
+    {
+      "dataset": "dcgen",
+      "method": "direct",
+      "model": "GPT-4o",
+      "code_similarity": "7.26%",
+      "clip": "76.68%",
+      "block_match": "53.65%",
+      "text": "83.24%",
+      "position": "67.85%",
+      "color": "69.90%",
+      "fg_clip": "85.19%",
+      "org": "OpenAI",
+      "tags": [
+        "direct",
+        "GPT"
+      ],
+      "run_id": "dcgen_direct_gpt-4o_20260102_092937"
     },
     {
       "dataset": "dcgen",
