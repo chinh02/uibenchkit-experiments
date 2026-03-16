@@ -167,50 +167,110 @@ def read_evaluation_file(eval_path: Path) -> Optional[Dict[str, Any]]:
         return None
 
 
-def extract_metrics(eval_data: Dict[str, Any]) -> Dict[str, Optional[float]]:
-    """Extract metric averages from evaluation data."""
-    metrics = {
-        "code_similarity_avg": None,
-        "clip_avg": None,
-        "fg_block_match_avg": None,
-        "fg_text_avg": None,
-        "fg_position_avg": None,
-        "fg_color_avg": None,
-        "fg_clip_avg": None,
+def extract_token_usage(folder: Path) -> Dict[str, Optional[float]]:
+    """Extract per-instance token usage from token_details.json and cost_report.json.
+
+    Returns text/vision/response prompt tokens per instance, or None values
+    if the required files are missing.
+    """
+    token_info = {
+        "text_prompt_tokens_per_instance": None,
+        "vision_prompt_tokens_per_instance": None,
+        "response_tokens_per_instance": None,
     }
-    
+
+    cost_path = folder / "cost_report.json"
+    token_path = folder / "token_details.json"
+
+    if not cost_path.exists():
+        return token_info
+
+    try:
+        with open(cost_path, 'r', encoding='utf-8') as f:
+            cost_data = json.load(f)
+    except Exception:
+        return token_info
+
+    total_instances = cost_data.get("total_instances", 0)
+    if total_instances == 0:
+        return token_info
+
+    # Response tokens per instance (always available from cost_report)
+    total_response = cost_data.get("token_usage", {}).get("total_response_tokens", 0)
+    token_info["response_tokens_per_instance"] = round(total_response / total_instances, 2)
+
+    # Text/vision split (only available if token_details.json exists)
+    if token_path.exists():
+        try:
+            with open(token_path, 'r', encoding='utf-8') as f:
+                token_data = json.load(f)
+            total_text = token_data.get("total_text_prompt_tokens", 0)
+            total_vision = token_data.get("total_vision_prompt_tokens", 0)
+            token_info["text_prompt_tokens_per_instance"] = round(total_text / total_instances, 2)
+            token_info["vision_prompt_tokens_per_instance"] = round(total_vision / total_instances, 2)
+        except Exception:
+            pass
+
+    return token_info
+
+
+def extract_metrics(eval_data: Dict[str, Any], total_instances: int = 0) -> Dict[str, Optional[float]]:
+    """Extract metric averages from evaluation data.
+
+    Two kinds of averages are computed for each metric:
+      - *_avg:     average over successful instances only (original behaviour)
+      - *_all_avg: average over ALL instances (failed instances score 0)
+
+    Args:
+        eval_data: parsed evaluation.json
+        total_instances: total instance count from cost_report.json (used for
+            the all-instance average).  If 0 the *_all_avg fields are None.
+    """
+    metric_keys = [
+        "code_similarity", "clip",
+        "fg_block_match", "fg_text", "fg_position", "fg_color", "fg_clip",
+    ]
+    metrics: Dict[str, Optional[float]] = {}
+    for k in metric_keys:
+        metrics[f"{k}_avg"] = None
+        metrics[f"{k}_all_avg"] = None
+
     if not eval_data or "metrics" not in eval_data:
         return metrics
-    
+
     eval_metrics = eval_data["metrics"]
-    
+
+    def _set(key: str, scores: dict, average: Optional[float]):
+        """Set both the success-only and all-instance averages."""
+        metrics[f"{key}_avg"] = average
+        if total_instances > 0 and scores:
+            metrics[f"{key}_all_avg"] = sum(scores.values()) / total_instances
+        else:
+            metrics[f"{key}_all_avg"] = average  # fallback: same as success-only
+
     # Code similarity
-    if "code_similarity" in eval_metrics and "average" in eval_metrics["code_similarity"]:
-        metrics["code_similarity_avg"] = eval_metrics["code_similarity"]["average"]
-    
+    if "code_similarity" in eval_metrics:
+        cs = eval_metrics["code_similarity"]
+        _set("code_similarity", cs.get("scores", {}), cs.get("average"))
+
     # CLIP
-    if "clip" in eval_metrics and "average" in eval_metrics["clip"]:
-        metrics["clip_avg"] = eval_metrics["clip"]["average"]
-    
+    if "clip" in eval_metrics:
+        cl = eval_metrics["clip"]
+        _set("clip", cl.get("scores", {}), cl.get("average"))
+
     # Fine-grained metrics
     if "fine_grained" in eval_metrics:
         fg = eval_metrics["fine_grained"]
-        
-        if "block_match" in fg and "average" in fg["block_match"]:
-            metrics["fg_block_match_avg"] = fg["block_match"]["average"]
-        
-        if "text" in fg and "average" in fg["text"]:
-            metrics["fg_text_avg"] = fg["text"]["average"]
-        
-        if "position" in fg and "average" in fg["position"]:
-            metrics["fg_position_avg"] = fg["position"]["average"]
-        
-        if "color" in fg and "average" in fg["color"]:
-            metrics["fg_color_avg"] = fg["color"]["average"]
-        
-        if "clip" in fg and "average" in fg["clip"]:
-            metrics["fg_clip_avg"] = fg["clip"]["average"]
-    
+        for fg_name, key in [
+            ("block_match", "fg_block_match"),
+            ("text", "fg_text"),
+            ("position", "fg_position"),
+            ("color", "fg_color"),
+            ("clip", "fg_clip"),
+        ]:
+            if fg_name in fg:
+                _set(key, fg[fg_name].get("scores", {}), fg[fg_name].get("average"))
+
     return metrics
 
 
@@ -269,9 +329,23 @@ def process_raw_data() -> Dict[str, List[Dict]]:
                     pass
             print(f"  Skipping: No evaluation data")
             continue
-        
-        # Extract metrics
-        metrics = extract_metrics(eval_data)
+
+        # Read total_instances from cost_report.json for all-instance averages
+        total_instances = 0
+        cost_path = folder / "cost_report.json"
+        if cost_path.exists():
+            try:
+                with open(cost_path, 'r', encoding='utf-8') as f:
+                    cost_data = json.load(f)
+                total_instances = cost_data.get("total_instances", 0)
+            except Exception:
+                pass
+
+        # Extract metrics (with both success-only and all-instance averages)
+        metrics = extract_metrics(eval_data, total_instances)
+
+        # Extract token usage per instance
+        token_usage = extract_token_usage(folder)
         
         # Only include if we have at least CLIP score
         if metrics["clip_avg"] is None:
@@ -285,6 +359,7 @@ def process_raw_data() -> Dict[str, List[Dict]]:
             "model": parsed["model"],
             "run_id": parsed["run_id"],
             **metrics,
+            **token_usage,
         }
         
         results[dataset].append(entry)
@@ -301,10 +376,15 @@ def save_csv(data: List[Dict], output_path: Path):
     
     # CSV columns
     columns = [
-        "dataset", "method", "model", 
+        "dataset", "method", "model",
         "code_similarity_avg", "clip_avg",
-        "fg_block_match_avg", "fg_text_avg", "fg_position_avg", 
+        "fg_block_match_avg", "fg_text_avg", "fg_position_avg",
         "fg_color_avg", "fg_clip_avg",
+        "code_similarity_all_avg", "clip_all_avg",
+        "fg_block_match_all_avg", "fg_text_all_avg", "fg_position_all_avg",
+        "fg_color_all_avg", "fg_clip_all_avg",
+        "text_prompt_tokens_per_instance", "vision_prompt_tokens_per_instance",
+        "response_tokens_per_instance",
         "run_id"
     ]
     
@@ -344,6 +424,18 @@ def save_json(data: List[Dict], dataset: str, output_path: Path):
             "position": format_metric(entry["fg_position_avg"]),
             "color": format_metric(entry["fg_color_avg"]),
             "fg_clip": format_metric(entry["fg_clip_avg"]),
+            # All-instance averages (failed instances count as 0)
+            "clip_all": format_metric(entry["clip_all_avg"]),
+            "code_similarity_all": format_metric(entry["code_similarity_all_avg"], False),
+            "block_match_all": format_metric(entry["fg_block_match_all_avg"]),
+            "text_all": format_metric(entry["fg_text_all_avg"]),
+            "position_all": format_metric(entry["fg_position_all_avg"]),
+            "color_all": format_metric(entry["fg_color_all_avg"]),
+            "fg_clip_all": format_metric(entry["fg_clip_all_avg"]),
+            # Token usage per instance
+            "text_prompt_tokens_per_instance": entry.get("text_prompt_tokens_per_instance"),
+            "vision_prompt_tokens_per_instance": entry.get("vision_prompt_tokens_per_instance"),
+            "response_tokens_per_instance": entry.get("response_tokens_per_instance"),
             "org": get_organization(entry["model"]),
             "tags": get_tags(entry["model"], entry["method"]),
             "run_id": entry["run_id"],
