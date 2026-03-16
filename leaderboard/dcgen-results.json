@@ -1,6 +1,6 @@
 {
   "name": "dcgen",
-  "lastUpdated": "2026-03-16T12:56:05.141752Z",
+  "lastUpdated": "2026-03-16T13:17:27.523152Z",
   "results": [
     {
       "dataset": "dcgen",
@@ -29,35 +29,6 @@
         "Claude"
       ],
       "run_id": "dcgen_direct_claude-3-7-sonnet-20250219_20260117_025333"
-    },
-    {
-      "dataset": "dcgen",
-      "method": "direct",
-      "model": "Gemini-3-Pro-Preview",
-      "code_similarity": "15.83%",
-      "clip": "86.86%",
-      "block_match": "80.70%",
-      "text": "92.39%",
-      "position": "83.94%",
-      "color": "81.09%",
-      "fg_clip": "91.95%",
-      "clip_all": "83.37%",
-      "code_similarity_all": "15.10%",
-      "block_match_all": "76.53%",
-      "text_all": "87.61%",
-      "position_all": "79.60%",
-      "color_all": "76.90%",
-      "fg_clip_all": "87.20%",
-      "text_prompt_tokens_per_instance": 41.28,
-      "vision_prompt_tokens_per_instance": 589.7,
-      "response_tokens_per_instance": 2616.57,
-      "org": "Google",
-      "tags": [
-        "direct",
-        "Gemini",
-        "Pro"
-      ],
-      "run_id": "dcgen_direct_gemini-3-pro-preview_20260110_030916"
     },
     {
       "dataset": "dcgen",
@@ -134,8 +105,8 @@
       "position_all": "60.72%",
       "color_all": "59.13%",
       "fg_clip_all": "86.53%",
-      "text_prompt_tokens_per_instance": null,
-      "vision_prompt_tokens_per_instance": null,
+      "text_prompt_tokens_per_instance": 2880.18,
+      "vision_prompt_tokens_per_instance": 5395.26,
       "response_tokens_per_instance": 13851.67,
       "org": "OpenAI",
       "tags": [
@@ -171,34 +142,6 @@
         "GPT"
       ],
       "run_id": "dcgen_dcgen_gpt-4-1_20260107_023020"
-    },
-    {
-      "dataset": "dcgen",
-      "method": "uicopilot",
-      "model": "gpt-5",
-      "code_similarity": "17.35%",
-      "clip": "84.22%",
-      "block_match": "55.90%",
-      "text": "66.56%",
-      "position": "59.83%",
-      "color": "59.68%",
-      "fg_clip": "88.63%",
-      "clip_all": "84.22%",
-      "code_similarity_all": "17.35%",
-      "block_match_all": "55.90%",
-      "text_all": "66.56%",
-      "position_all": "59.83%",
-      "color_all": "59.68%",
-      "fg_clip_all": "88.63%",
-      "text_prompt_tokens_per_instance": null,
-      "vision_prompt_tokens_per_instance": null,
-      "response_tokens_per_instance": 11177.71,
-      "org": "OpenAI",
-      "tags": [
-        "uicopilot",
-        "GPT"
-      ],
-      "run_id": "dcgen_uicopilot_gpt-5_20260315_072829"
     },
     {
       "dataset": "dcgen",
