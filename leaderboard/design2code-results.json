@@ -1,6 +1,6 @@
 {
   "name": "design2code",
-  "lastUpdated": "2026-03-16T13:17:27.526416Z",
+  "lastUpdated": "2026-03-16T13:44:16.992563Z",
   "results": [
     {
       "dataset": "design2code",
@@ -508,6 +508,34 @@
         "Pro"
       ],
       "run_id": "design2code_direct_doubao-1-5-vision-pro-32k-250115_20260115_042635"
+    },
+    {
+      "dataset": "design2code",
+      "method": "layoutcoder",
+      "model": "gpt-5",
+      "code_similarity": "21.05%",
+      "clip": "75.10%",
+      "block_match": "77.93%",
+      "text": "94.94%",
+      "position": "86.00%",
+      "color": "88.10%",
+      "fg_clip": "86.21%",
+      "clip_all": "75.10%",
+      "code_similarity_all": "21.05%",
+      "block_match_all": "77.93%",
+      "text_all": "94.94%",
+      "position_all": "86.00%",
+      "color_all": "88.10%",
+      "fg_clip_all": "86.21%",
+      "text_prompt_tokens_per_instance": null,
+      "vision_prompt_tokens_per_instance": null,
+      "response_tokens_per_instance": 15721.55,
+      "org": "OpenAI",
+      "tags": [
+        "layoutcoder",
+        "GPT"
+      ],
+      "run_id": "design2code_layoutcoder_gpt-5_20260101_000000"
     },
     {
       "dataset": "design2code",

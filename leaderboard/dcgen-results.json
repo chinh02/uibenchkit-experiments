@@ -1,6 +1,6 @@
 {
   "name": "dcgen",
-  "lastUpdated": "2026-03-16T13:17:27.523152Z",
+  "lastUpdated": "2026-03-16T13:44:16.988948Z",
   "results": [
     {
       "dataset": "dcgen",
@@ -310,6 +310,34 @@
         "Pro"
       ],
       "run_id": "dcgen_direct_doubao-1-5-vision-pro-32k-250115_20260116_030003"
+    },
+    {
+      "dataset": "dcgen",
+      "method": "layoutcoder",
+      "model": "gpt-5",
+      "code_similarity": "17.16%",
+      "clip": "77.86%",
+      "block_match": "68.16%",
+      "text": "90.31%",
+      "position": "80.60%",
+      "color": "80.74%",
+      "fg_clip": "89.01%",
+      "clip_all": "77.64%",
+      "code_similarity_all": "17.11%",
+      "block_match_all": "67.57%",
+      "text_all": "89.53%",
+      "position_all": "79.90%",
+      "color_all": "80.04%",
+      "fg_clip_all": "88.24%",
+      "text_prompt_tokens_per_instance": 8288.24,
+      "vision_prompt_tokens_per_instance": 11180.63,
+      "response_tokens_per_instance": 51110.44,
+      "org": "OpenAI",
+      "tags": [
+        "layoutcoder",
+        "GPT"
+      ],
+      "run_id": "dcgen_layoutcoder_gpt-5_20260101_000000"
     },
     {
       "dataset": "dcgen",
