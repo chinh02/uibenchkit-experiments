@@ -18,9 +18,13 @@ Output:
 import json
 import csv
 import os
+import re
+import sys
 from pathlib import Path
 from datetime import datetime, timezone
 from typing import Dict, List, Optional, Any
+
+import tiktoken
 
 # Configuration
 RAW_DATA_DIR = Path(__file__).parent / "raw-data"
@@ -60,6 +64,110 @@ MODEL_ORGANIZATIONS = {
     "llama": "Meta",
     "qwen": "Alibaba",
 }
+
+# ============================================================
+# Token Split: Prompts (must match DCGen/api.py)
+# ============================================================
+
+PROMPT_DIRECT = (
+    'Here is a prototype image of a webpage. Return a single piece of HTML '
+    'and tail-wind CSS code to reproduce exactly the website. Use '
+    '"placeholder.png" to replace the images. Pay attention to things like '
+    "size, text, position, and color of all the elements, as well as the "
+    "overall layout. Respond with the content of the HTML+tail-wind CSS code."
+)
+
+PROMPT_LEAF = (
+    "Here is a prototype image of a container. Please fill a single piece of "
+    "HTML and tail-wind CSS code to reproduce exactly the given container. Use "
+    "'placeholder.png' to replace the images. Pay attention to things like "
+    "size, text, and color of all the elements, as well as the background "
+    "color and layout. Here is the code for you to fill in:\n"
+    "    <div>\n"
+    "    You code here\n"
+    "    </div>\n"
+    "    Respond with only the code inside the <div> tags."
+)
+
+PROMPT_ROOT_PREFIX = (
+    'Here is a prototype image of a webpage. I have an draft HTML file that '
+    'contains most of the elements and their correct positions, but it has '
+    '*inaccurate background*, and some missing or wrong elements. Please '
+    'compare the draft and the prototype image, then revise the draft '
+    'implementation. Return a single piece of accurate HTML+tail-wind CSS '
+    'code to reproduce the website. Use "placeholder.png" to replace the '
+    'images. Respond with the content of the HTML+tail-wind CSS code. The '
+    'current implementation I have is: \n\n '
+)
+
+# ============================================================
+# Token Split: Encoding helpers
+# ============================================================
+
+_MODEL_ENCODING_MAP = {
+    "gpt-4o": "o200k_base",
+    "gpt-4.1": "o200k_base",
+    "gpt-5": "o200k_base",
+}
+_DEFAULT_ENCODING = "cl100k_base"
+
+_LATCODER_PROMPT_TOKENS = None  # Cache
+_UICOPILOT_PROMPT_TOKENS = None  # Cache
+
+
+def _get_encoding(model: str) -> tiktoken.Encoding:
+    """Get the tiktoken encoding appropriate for a model."""
+    encoding_name = _DEFAULT_ENCODING
+    for prefix, enc in _MODEL_ENCODING_MAP.items():
+        if model.startswith(prefix):
+            encoding_name = enc
+            break
+    return tiktoken.get_encoding(encoding_name)
+
+
+def _get_latcoder_prompt_tokens(enc: tiktoken.Encoding) -> dict:
+    """Get token counts for latcoder prompts. Tries import from DCGen, falls back to hardcoded."""
+    global _LATCODER_PROMPT_TOKENS
+    if _LATCODER_PROMPT_TOKENS is not None:
+        return _LATCODER_PROMPT_TOKENS
+    try:
+        dcgen_root = str(Path(__file__).resolve().parent.parent / "DCGen")
+        if dcgen_root not in sys.path:
+            sys.path.insert(0, dcgen_root)
+        from methods.latcoder.prompts import PROMPT_GENERATE, PROMPT_ASSEMBLE
+        generate_tokens = len(enc.encode(PROMPT_GENERATE))
+        assemble_prefix = PROMPT_ASSEMBLE + "\n\nModule data:\n"
+        assemble_prefix_tokens = len(enc.encode(assemble_prefix))
+    except ImportError:
+        generate_tokens = 841
+        assemble_prefix_tokens = 541
+    _LATCODER_PROMPT_TOKENS = {
+        "generate": generate_tokens,
+        "assemble_prefix": assemble_prefix_tokens,
+    }
+    return _LATCODER_PROMPT_TOKENS
+
+
+def _get_uicopilot_prompt_tokens(enc: tiktoken.Encoding) -> dict:
+    """Get token counts for uicopilot prompts. Tries import from DCGen, falls back to hardcoded."""
+    global _UICOPILOT_PROMPT_TOKENS
+    if _UICOPILOT_PROMPT_TOKENS is not None:
+        return _UICOPILOT_PROMPT_TOKENS
+    try:
+        dcgen_root = str(Path(__file__).resolve().parent.parent / "DCGen")
+        if dcgen_root not in sys.path:
+            sys.path.insert(0, dcgen_root)
+        from methods.uicopilot.prompts import PROMPT_I2C, PROMPT_OPTIMIZE
+        i2c_tokens = len(enc.encode(PROMPT_I2C))
+        optimize_tokens = len(enc.encode(PROMPT_OPTIMIZE))
+    except ImportError:
+        i2c_tokens = 150
+        optimize_tokens = 128
+    _UICOPILOT_PROMPT_TOKENS = {
+        "i2c": i2c_tokens,
+        "optimize": optimize_tokens,
+    }
+    return _UICOPILOT_PROMPT_TOKENS
 
 
 def get_organization(model_name: str) -> str:
@@ -151,6 +259,63 @@ def parse_run_folder_name(folder_name: str) -> Dict[str, str]:
     }
 
 
+def _parse_yyyymmdd(raw: str) -> Optional[str]:
+    """Parse YYYYMMDD and return YYYY-MM-DD if valid."""
+    if len(raw) != 8 or not raw.isdigit():
+        return None
+    try:
+        dt = datetime.strptime(raw, "%Y%m%d")
+        return dt.strftime("%Y-%m-%d")
+    except ValueError:
+        return None
+
+
+def _parse_yymmdd(raw: str) -> Optional[str]:
+    """Parse YYMMDD as 20YY-MM-DD if valid."""
+    if len(raw) != 6 or not raw.isdigit():
+        return None
+    try:
+        year = 2000 + int(raw[:2])
+        month = int(raw[2:4])
+        day = int(raw[4:6])
+        dt = datetime(year, month, day)
+        return dt.strftime("%Y-%m-%d")
+    except ValueError:
+        return None
+
+
+def extract_model_date(model_name: str, timestamp: str) -> Dict[str, Optional[str]]:
+    """Extract effective model date from model name, fallback to run timestamp date."""
+    # Prefer explicit date embedded in model name.
+    # Supports YYYYMMDD (e.g., claude-3-7-sonnet-20250219)
+    # and YYMMDD (e.g., doubao-...-250115).
+    tokens = [t for t in re.split(r"[^0-9A-Za-z]+", model_name) if t]
+
+    for token in reversed(tokens):
+        model_date = _parse_yyyymmdd(token)
+        if model_date:
+            return {
+                "model_date": model_date,
+                "model_date_source": "model_name",
+            }
+
+    for token in reversed(tokens):
+        model_date = _parse_yymmdd(token)
+        if model_date:
+            return {
+                "model_date": model_date,
+                "model_date_source": "model_name",
+            }
+
+    # Fallback to run timestamp date: YYYYMMDD_HHMMSS
+    run_date_raw = timestamp.split("_")[0] if timestamp else ""
+    run_date = _parse_yyyymmdd(run_date_raw)
+    return {
+        "model_date": run_date,
+        "model_date_source": "run_timestamp" if run_date else None,
+    }
+
+
 def read_evaluation_file(eval_path: Path) -> Optional[Dict[str, Any]]:
     """Read and parse an evaluation.json file."""
     try:
@@ -167,11 +332,144 @@ def read_evaluation_file(eval_path: Path) -> Optional[Dict[str, Any]]:
         return None
 
 
-def extract_token_usage(folder: Path) -> Dict[str, Optional[float]]:
-    """Extract per-instance token usage from token_details.json and cost_report.json.
+def _compute_token_split(folder: Path, cost_data: dict) -> Optional[tuple]:
+    """Compute (total_text_tokens, total_vision_tokens) for a run.
 
-    Returns text/vision/response prompt tokens per instance, or None values
-    if the required files are missing.
+    Dispatches to method-specific logic. Returns None if computation
+    is not possible (missing data or unknown method).
+    """
+    method = cost_data.get("method", "")
+    model = cost_data.get("model", "")
+    token_usage = cost_data.get("token_usage", {})
+    total_prompt = token_usage.get("total_prompt_tokens", 0)
+    call_count = token_usage.get("call_count", 0)
+    num_instances = cost_data.get("total_instances", 0)
+
+    if call_count == 0:
+        return None
+
+    enc = _get_encoding(model)
+
+    if method == "direct":
+        text_per_call = len(enc.encode(PROMPT_DIRECT))
+        total_text = text_per_call * call_count
+        return (total_text, total_prompt - total_text)
+
+    elif method == "dcgen":
+        if num_instances == 0:
+            return None
+        leaf_tokens = len(enc.encode(PROMPT_LEAF))
+        prefix_tokens = len(enc.encode(PROMPT_ROOT_PREFIX))
+
+        leaf_calls = call_count - num_instances
+        leaf_text = leaf_tokens * leaf_calls
+
+        # Read .html outputs for [CODE] token estimation
+        html_files = [f for f in folder.iterdir() if f.suffix == ".html"]
+        code_tokens_total = 0
+        instances_with_html = 0
+        for fpath in html_files:
+            try:
+                html_content = fpath.read_text(encoding="utf-8", errors="ignore")
+                code_tokens_total += len(enc.encode(html_content))
+                instances_with_html += 1
+            except Exception:
+                continue
+
+        if 0 < instances_with_html < num_instances:
+            avg = code_tokens_total / instances_with_html
+            code_tokens_total += int(avg * (num_instances - instances_with_html))
+
+        refine_text = (prefix_tokens * num_instances) + code_tokens_total
+        total_text = leaf_text + refine_text
+        return (total_text, total_prompt - total_text)
+
+    elif method == "latcoder":
+        if num_instances == 0:
+            return None
+        lc = _get_latcoder_prompt_tokens(enc)
+
+        latcoder_dirs = sorted(folder.glob("*_latcoder"))
+        assembly_calls = 0
+        assembly_data_tokens = 0
+
+        for art_dir in latcoder_dirs:
+            if not (art_dir / "agent_assembly_0.html").exists():
+                continue
+            assembly_calls += 1
+
+            bp_path = art_dir / "block_positions.json"
+            modules_dir = art_dir / "modules"
+            if not bp_path.exists() or not modules_dir.is_dir():
+                continue
+
+            try:
+                plans = json.loads(bp_path.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+
+            code_plans = []
+            for i, plan in enumerate(plans):
+                html_path = modules_dir / f"module_{i}_output.html"
+                if html_path.exists():
+                    try:
+                        code_plans.append({
+                            "module_position": plan,
+                            "module_code": html_path.read_text(encoding="utf-8", errors="ignore"),
+                        })
+                    except Exception:
+                        continue
+
+            if code_plans:
+                assembly_data_tokens += len(enc.encode(json.dumps(code_plans, indent=2)))
+
+        module_calls = call_count - assembly_calls
+        module_text = lc["generate"] * module_calls
+        assembly_text = (lc["assemble_prefix"] * assembly_calls) + assembly_data_tokens
+        total_text = module_text + assembly_text
+        return (total_text, total_prompt - total_text)
+
+    elif method == "uicopilot":
+        if num_instances == 0:
+            return None
+        uic = _get_uicopilot_prompt_tokens(enc)
+
+        optimize_calls = num_instances
+        leaf_calls = call_count - optimize_calls
+        leaf_text = uic["i2c"] * leaf_calls
+
+        uicopilot_dirs = sorted(folder.glob("*_uicopilot"))
+        optimize_html_tokens = 0
+        instances_with_artifacts = 0
+
+        for art_dir in uicopilot_dirs:
+            before_path = art_dir / "before_optimize.html"
+            if not before_path.exists():
+                continue
+            try:
+                html_content = before_path.read_text(encoding="utf-8", errors="ignore")
+                optimize_html_tokens += len(enc.encode(html_content))
+                instances_with_artifacts += 1
+            except Exception:
+                continue
+
+        if 0 < instances_with_artifacts < num_instances:
+            avg = optimize_html_tokens / instances_with_artifacts
+            optimize_html_tokens += int(avg * (num_instances - instances_with_artifacts))
+
+        optimize_text = (uic["optimize"] * optimize_calls) + optimize_html_tokens
+        total_text = leaf_text + optimize_text
+        return (total_text, total_prompt - total_text)
+
+    return None
+
+
+def extract_token_usage(folder: Path, cost_data: Optional[dict] = None) -> Dict[str, Optional[float]]:
+    """Extract per-instance token usage, computing text/vision split inline.
+
+    If cost_data is provided, uses it directly. Otherwise reads cost_report.json.
+    Text/vision split is computed from prompt constants and saved artifacts
+    (no separate token_details.json needed).
     """
     token_info = {
         "text_prompt_tokens_per_instance": None,
@@ -179,17 +477,15 @@ def extract_token_usage(folder: Path) -> Dict[str, Optional[float]]:
         "response_tokens_per_instance": None,
     }
 
-    cost_path = folder / "cost_report.json"
-    token_path = folder / "token_details.json"
-
-    if not cost_path.exists():
-        return token_info
-
-    try:
-        with open(cost_path, 'r', encoding='utf-8') as f:
-            cost_data = json.load(f)
-    except Exception:
-        return token_info
+    if cost_data is None:
+        cost_path = folder / "cost_report.json"
+        if not cost_path.exists():
+            return token_info
+        try:
+            with open(cost_path, 'r', encoding='utf-8') as f:
+                cost_data = json.load(f)
+        except Exception:
+            return token_info
 
     total_instances = cost_data.get("total_instances", 0)
     if total_instances == 0:
@@ -199,17 +495,12 @@ def extract_token_usage(folder: Path) -> Dict[str, Optional[float]]:
     total_response = cost_data.get("token_usage", {}).get("total_response_tokens", 0)
     token_info["response_tokens_per_instance"] = round(total_response / total_instances, 2)
 
-    # Text/vision split (only available if token_details.json exists)
-    if token_path.exists():
-        try:
-            with open(token_path, 'r', encoding='utf-8') as f:
-                token_data = json.load(f)
-            total_text = token_data.get("total_text_prompt_tokens", 0)
-            total_vision = token_data.get("total_vision_prompt_tokens", 0)
-            token_info["text_prompt_tokens_per_instance"] = round(total_text / total_instances, 2)
-            token_info["vision_prompt_tokens_per_instance"] = round(total_vision / total_instances, 2)
-        except Exception:
-            pass
+    # Compute text/vision split inline
+    split = _compute_token_split(folder, cost_data)
+    if split is not None:
+        total_text, total_vision = split
+        token_info["text_prompt_tokens_per_instance"] = round(total_text / total_instances, 2)
+        token_info["vision_prompt_tokens_per_instance"] = round(total_vision / total_instances, 2)
 
     return token_info
 
@@ -330,8 +621,9 @@ def process_raw_data() -> Dict[str, List[Dict]]:
             print(f"  Skipping: No evaluation data")
             continue
 
-        # Read total_instances from cost_report.json for all-instance averages
+        # Read cost_report.json for all-instance averages and token split
         total_instances = 0
+        cost_data = None
         cost_path = folder / "cost_report.json"
         if cost_path.exists():
             try:
@@ -344,8 +636,8 @@ def process_raw_data() -> Dict[str, List[Dict]]:
         # Extract metrics (with both success-only and all-instance averages)
         metrics = extract_metrics(eval_data, total_instances)
 
-        # Extract token usage per instance
-        token_usage = extract_token_usage(folder)
+        # Extract token usage per instance (computes text/vision split inline)
+        token_usage = extract_token_usage(folder, cost_data)
         
         # Only include if we have at least CLIP score
         if metrics["clip_avg"] is None:
@@ -353,11 +645,13 @@ def process_raw_data() -> Dict[str, List[Dict]]:
             continue
         
         # Build result entry
+        model_date_info = extract_model_date(parsed["model"], parsed["timestamp"])
         entry = {
             "dataset": dataset,
             "method": parsed["method"],
             "model": parsed["model"],
             "run_id": parsed["run_id"],
+            **model_date_info,
             **metrics,
             **token_usage,
         }
@@ -376,7 +670,7 @@ def save_csv(data: List[Dict], output_path: Path):
     
     # CSV columns
     columns = [
-        "dataset", "method", "model",
+        "dataset", "method", "model", "model_date", "model_date_source",
         "code_similarity_avg", "clip_avg",
         "fg_block_match_avg", "fg_text_avg", "fg_position_avg",
         "fg_color_avg", "fg_clip_avg",
@@ -417,6 +711,8 @@ def save_json(data: List[Dict], dataset: str, output_path: Path):
             "dataset": entry["dataset"],
             "method": entry["method"],
             "model": get_display_name(entry["model"]),
+            "model_date": entry.get("model_date"),
+            "model_date_source": entry.get("model_date_source"),
             "code_similarity": format_metric(entry["code_similarity_avg"], False),
             "clip": format_metric(entry["clip_avg"]),
             "block_match": format_metric(entry["fg_block_match_avg"]),
