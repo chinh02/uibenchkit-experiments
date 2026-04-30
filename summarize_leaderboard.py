@@ -482,7 +482,7 @@ def extract_token_usage(folder: Path, cost_data: Optional[dict] = None) -> Dict[
         if not cost_path.exists():
             return token_info
         try:
-            with open(cost_path, 'r', encoding='utf-8') as f:
+            with open(cost_path, 'r', encoding='utf-8-sig') as f:
                 cost_data = json.load(f)
         except Exception:
             return token_info
@@ -501,6 +501,34 @@ def extract_token_usage(folder: Path, cost_data: Optional[dict] = None) -> Dict[
         total_text, total_vision = split
         token_info["text_prompt_tokens_per_instance"] = round(total_text / total_instances, 2)
         token_info["vision_prompt_tokens_per_instance"] = round(total_vision / total_instances, 2)
+
+    token_details_path = folder / "token_details.json"
+    if (
+        token_details_path.exists()
+        and (
+            token_info["text_prompt_tokens_per_instance"] is None
+            or token_info["vision_prompt_tokens_per_instance"] is None
+        )
+    ):
+        try:
+            with open(token_details_path, 'r', encoding='utf-8-sig') as f:
+                token_details = json.load(f)
+            detail_instances = token_details.get("total_instances") or total_instances
+            if detail_instances:
+                total_text = token_details.get("total_text_prompt_tokens")
+                total_vision = token_details.get("total_vision_prompt_tokens")
+                if (
+                    token_info["text_prompt_tokens_per_instance"] is None
+                    and total_text is not None
+                ):
+                    token_info["text_prompt_tokens_per_instance"] = round(total_text / detail_instances, 2)
+                if (
+                    token_info["vision_prompt_tokens_per_instance"] is None
+                    and total_vision is not None
+                ):
+                    token_info["vision_prompt_tokens_per_instance"] = round(total_vision / detail_instances, 2)
+        except Exception:
+            pass
 
     return token_info
 
@@ -627,7 +655,7 @@ def process_raw_data() -> Dict[str, List[Dict]]:
         cost_path = folder / "cost_report.json"
         if cost_path.exists():
             try:
-                with open(cost_path, 'r', encoding='utf-8') as f:
+                with open(cost_path, 'r', encoding='utf-8-sig') as f:
                     cost_data = json.load(f)
                 total_instances = cost_data.get("total_instances", 0)
             except Exception:

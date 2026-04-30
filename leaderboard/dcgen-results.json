@@ -1,6 +1,6 @@
 {
   "name": "dcgen",
-  "lastUpdated": "2026-04-30T15:00:31.646656Z",
+  "lastUpdated": "2026-04-30T17:45:04.836340Z",
   "results": [
     {
       "dataset": "dcgen",
@@ -384,8 +384,8 @@
       "position_all": "79.90%",
       "color_all": "80.04%",
       "fg_clip_all": "88.24%",
-      "text_prompt_tokens_per_instance": null,
-      "vision_prompt_tokens_per_instance": null,
+      "text_prompt_tokens_per_instance": 8288.24,
+      "vision_prompt_tokens_per_instance": 11180.63,
       "response_tokens_per_instance": 51110.44,
       "org": "OpenAI",
       "tags": [

@@ -1,6 +1,6 @@
 {
   "name": "design2code",
-  "lastUpdated": "2026-04-30T15:00:31.650171Z",
+  "lastUpdated": "2026-04-30T17:45:04.838328Z",
   "results": [
     {
       "dataset": "design2code",
@@ -565,9 +565,9 @@
       "position_all": "86.00%",
       "color_all": "88.10%",
       "fg_clip_all": "86.21%",
-      "text_prompt_tokens_per_instance": null,
-      "vision_prompt_tokens_per_instance": null,
-      "response_tokens_per_instance": null,
+      "text_prompt_tokens_per_instance": 2967.48,
+      "vision_prompt_tokens_per_instance": 3017.67,
+      "response_tokens_per_instance": 1497.95,
       "org": "OpenAI",
       "tags": [
         "layoutcoder",
