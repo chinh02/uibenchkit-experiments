@@ -1,6 +1,6 @@
 {
   "name": "design2code",
-  "lastUpdated": "2026-04-06T03:27:40.644957Z",
+  "lastUpdated": "2026-04-30T15:00:31.650171Z",
   "results": [
     {
       "dataset": "design2code",
@@ -567,7 +567,7 @@
       "fg_clip_all": "86.21%",
       "text_prompt_tokens_per_instance": null,
       "vision_prompt_tokens_per_instance": null,
-      "response_tokens_per_instance": 15721.55,
+      "response_tokens_per_instance": null,
       "org": "OpenAI",
       "tags": [
         "layoutcoder",
