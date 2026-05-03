@@ -1,156 +1,156 @@
 {
-  "repo_id": "chinh02/WebBench",
-  "repo_url": "https://huggingface.co/datasets/chinh02/WebBench",
-  "tree_base": "https://huggingface.co/datasets/chinh02/WebBench/tree/main",
-  "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main",
+  "repo_id": "chinh02/UIBenchKit",
+  "repo_url": "https://huggingface.co/datasets/chinh02/UIBenchKit",
+  "tree_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main",
+  "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main",
   "runs": {
     "dcgen_dcgen_gpt-4-1_20260107_023020": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_dcgen_gpt-4-1_20260107_023020",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_dcgen_gpt-4-1_20260107_023020"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_dcgen_gpt-4-1_20260107_023020",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_dcgen_gpt-4-1_20260107_023020"
     },
     "dcgen_dcgen_gpt-4o_20260106_060400": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_dcgen_gpt-4o_20260106_060400",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_dcgen_gpt-4o_20260106_060400"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_dcgen_gpt-4o_20260106_060400",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_dcgen_gpt-4o_20260106_060400"
     },
     "dcgen_direct_claude-3-7-sonnet-20250219_20260117_025333": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_direct_claude-3-7-sonnet-20250219_20260117_025333",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_direct_claude-3-7-sonnet-20250219_20260117_025333"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_direct_claude-3-7-sonnet-20250219_20260117_025333",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_direct_claude-3-7-sonnet-20250219_20260117_025333"
     },
     "dcgen_direct_claude-opus-4-5-20251101_20260125_005010": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_direct_claude-opus-4-5-20251101_20260125_005010",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_direct_claude-opus-4-5-20251101_20260125_005010"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_direct_claude-opus-4-5-20251101_20260125_005010",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_direct_claude-opus-4-5-20251101_20260125_005010"
     },
     "dcgen_direct_doubao-1-5-vision-pro-32k-250115_20260116_030003": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_direct_doubao-1-5-vision-pro-32k-250115_20260116_030003",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_direct_doubao-1-5-vision-pro-32k-250115_20260116_030003"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_direct_doubao-1-5-vision-pro-32k-250115_20260116_030003",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_direct_doubao-1-5-vision-pro-32k-250115_20260116_030003"
     },
     "dcgen_direct_gemini-2-0-flash-lite_20260110_074123": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_direct_gemini-2-0-flash-lite_20260110_074123",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_direct_gemini-2-0-flash-lite_20260110_074123"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_direct_gemini-2-0-flash-lite_20260110_074123",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_direct_gemini-2-0-flash-lite_20260110_074123"
     },
     "dcgen_direct_gemini-2-5-flash-lite_20260110_060805": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_direct_gemini-2-5-flash-lite_20260110_060805",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_direct_gemini-2-5-flash-lite_20260110_060805"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_direct_gemini-2-5-flash-lite_20260110_060805",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_direct_gemini-2-5-flash-lite_20260110_060805"
     },
     "dcgen_direct_gemini-2-5-flash_20260109_142354": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_direct_gemini-2-5-flash_20260109_142354",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_direct_gemini-2-5-flash_20260109_142354"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_direct_gemini-2-5-flash_20260109_142354",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_direct_gemini-2-5-flash_20260109_142354"
     },
     "dcgen_direct_gemini-3-pro-preview_20260110_030916": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_direct_gemini-3-pro-preview_20260110_030916",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_direct_gemini-3-pro-preview_20260110_030916"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_direct_gemini-3-pro-preview_20260110_030916",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_direct_gemini-3-pro-preview_20260110_030916"
     },
     "dcgen_direct_gpt-4-1_20260107_023030": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_direct_gpt-4-1_20260107_023030",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_direct_gpt-4-1_20260107_023030"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_direct_gpt-4-1_20260107_023030",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_direct_gpt-4-1_20260107_023030"
     },
     "dcgen_direct_gpt-4o_20260102_092937": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_direct_gpt-4o_20260102_092937",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_direct_gpt-4o_20260102_092937"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_direct_gpt-4o_20260102_092937",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_direct_gpt-4o_20260102_092937"
     },
     "dcgen_direct_grok-4_20260121_012757": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_direct_grok-4_20260121_012757",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_direct_grok-4_20260121_012757"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_direct_grok-4_20260121_012757",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_direct_grok-4_20260121_012757"
     },
     "dcgen_direct_mistral-mistral-large-3-675b-instruct_20260128_154621": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_direct_mistral-mistral-large-3-675b-instruct_20260128_154621",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_direct_mistral-mistral-large-3-675b-instruct_20260128_154621"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_direct_mistral-mistral-large-3-675b-instruct_20260128_154621",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_direct_mistral-mistral-large-3-675b-instruct_20260128_154621"
     },
     "dcgen_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260127_074255": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260127_074255",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260127_074255"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260127_074255",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260127_074255"
     },
     "dcgen_latcoder_gpt-5_20260212_022005": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_latcoder_gpt-5_20260212_022005",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_latcoder_gpt-5_20260212_022005"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_latcoder_gpt-5_20260212_022005",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_latcoder_gpt-5_20260212_022005"
     },
     "dcgen_layoutcoder_gpt-5_20260101_000000": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_layoutcoder_gpt-5_20260101_000000",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_layoutcoder_gpt-5_20260101_000000"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_layoutcoder_gpt-5_20260101_000000",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_layoutcoder_gpt-5_20260101_000000"
     },
     "dcgen_uicopilot_gpt-5_20260310_063155": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/dcgen_uicopilot_gpt-5_20260310_063155",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/dcgen_uicopilot_gpt-5_20260310_063155"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/dcgen_uicopilot_gpt-5_20260310_063155",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/dcgen_uicopilot_gpt-5_20260310_063155"
     },
     "design2code_dcgen_gpt-4-1_20260110_122016": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_dcgen_gpt-4-1_20260110_122016",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_dcgen_gpt-4-1_20260110_122016"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_dcgen_gpt-4-1_20260110_122016",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_dcgen_gpt-4-1_20260110_122016"
     },
     "design2code_dcgen_gpt-4o_20260102_094946": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_dcgen_gpt-4o_20260102_094946",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_dcgen_gpt-4o_20260102_094946"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_dcgen_gpt-4o_20260102_094946",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_dcgen_gpt-4o_20260102_094946"
     },
     "design2code_direct_claude-3-7-sonnet-20250219_20260118_012948": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_direct_claude-3-7-sonnet-20250219_20260118_012948",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_direct_claude-3-7-sonnet-20250219_20260118_012948"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_direct_claude-3-7-sonnet-20250219_20260118_012948",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_direct_claude-3-7-sonnet-20250219_20260118_012948"
     },
     "design2code_direct_claude-opus-4-5-20251101_20260124_031629": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_direct_claude-opus-4-5-20251101_20260124_031629",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_direct_claude-opus-4-5-20251101_20260124_031629"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_direct_claude-opus-4-5-20251101_20260124_031629",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_direct_claude-opus-4-5-20251101_20260124_031629"
     },
     "design2code_direct_doubao-1-5-vision-pro-32k-250115_20260115_042635": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_direct_doubao-1-5-vision-pro-32k-250115_20260115_042635",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_direct_doubao-1-5-vision-pro-32k-250115_20260115_042635"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_direct_doubao-1-5-vision-pro-32k-250115_20260115_042635",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_direct_doubao-1-5-vision-pro-32k-250115_20260115_042635"
     },
     "design2code_direct_gemini-2-0-flash-lite_20260110_074131": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_direct_gemini-2-0-flash-lite_20260110_074131",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_direct_gemini-2-0-flash-lite_20260110_074131"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_direct_gemini-2-0-flash-lite_20260110_074131",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_direct_gemini-2-0-flash-lite_20260110_074131"
     },
     "design2code_direct_gemini-2-0-flash_20260101_161754": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_direct_gemini-2-0-flash_20260101_161754",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_direct_gemini-2-0-flash_20260101_161754"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_direct_gemini-2-0-flash_20260101_161754",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_direct_gemini-2-0-flash_20260101_161754"
     },
     "design2code_direct_gemini-2-5-flash-lite_20260110_060755": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_direct_gemini-2-5-flash-lite_20260110_060755",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_direct_gemini-2-5-flash-lite_20260110_060755"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_direct_gemini-2-5-flash-lite_20260110_060755",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_direct_gemini-2-5-flash-lite_20260110_060755"
     },
     "design2code_direct_gemini-2-5-flash_20260109_140638": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_direct_gemini-2-5-flash_20260109_140638",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_direct_gemini-2-5-flash_20260109_140638"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_direct_gemini-2-5-flash_20260109_140638",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_direct_gemini-2-5-flash_20260109_140638"
     },
     "design2code_direct_gemini-2-5-pro_20260101_162109": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_direct_gemini-2-5-pro_20260101_162109",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_direct_gemini-2-5-pro_20260101_162109"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_direct_gemini-2-5-pro_20260101_162109",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_direct_gemini-2-5-pro_20260101_162109"
     },
     "design2code_direct_gemini-3-pro-preview_20260110_030925": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_direct_gemini-3-pro-preview_20260110_030925",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_direct_gemini-3-pro-preview_20260110_030925"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_direct_gemini-3-pro-preview_20260110_030925",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_direct_gemini-3-pro-preview_20260110_030925"
     },
     "design2code_direct_gpt-4-1_20260110_122031": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_direct_gpt-4-1_20260110_122031",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_direct_gpt-4-1_20260110_122031"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_direct_gpt-4-1_20260110_122031",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_direct_gpt-4-1_20260110_122031"
     },
     "design2code_direct_gpt-4o_20260102_094907": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_direct_gpt-4o_20260102_094907",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_direct_gpt-4o_20260102_094907"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_direct_gpt-4o_20260102_094907",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_direct_gpt-4o_20260102_094907"
     },
     "design2code_direct_grok-4_20260123_044312": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_direct_grok-4_20260123_044312",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_direct_grok-4_20260123_044312"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_direct_grok-4_20260123_044312",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_direct_grok-4_20260123_044312"
     },
     "design2code_direct_mistral-mistral-large-3-675b-instruct_20260128_074216": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_direct_mistral-mistral-large-3-675b-instruct_20260128_074216",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_direct_mistral-mistral-large-3-675b-instruct_20260128_074216"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_direct_mistral-mistral-large-3-675b-instruct_20260128_074216",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_direct_mistral-mistral-large-3-675b-instruct_20260128_074216"
     },
     "design2code_direct_qwen-qwen3-vl-235b-a22b_20260129_021347": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_direct_qwen-qwen3-vl-235b-a22b_20260129_021347",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_direct_qwen-qwen3-vl-235b-a22b_20260129_021347"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_direct_qwen-qwen3-vl-235b-a22b_20260129_021347",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_direct_qwen-qwen3-vl-235b-a22b_20260129_021347"
     },
     "design2code_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260128_033016": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260128_033016",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260128_033016"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260128_033016",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260128_033016"
     },
     "design2code_latcoder_gpt-5_20260209_071006": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_latcoder_gpt-5_20260209_071006",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_latcoder_gpt-5_20260209_071006"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_latcoder_gpt-5_20260209_071006",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_latcoder_gpt-5_20260209_071006"
     },
     "design2code_layoutcoder_gpt-5_20260101_000000": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_layoutcoder_gpt-5_20260101_000000",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_layoutcoder_gpt-5_20260101_000000"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_layoutcoder_gpt-5_20260101_000000",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_layoutcoder_gpt-5_20260101_000000"
     },
     "design2code_uicopilot_gpt-5_20260308_114805": {
-      "tree_url": "https://huggingface.co/datasets/chinh02/WebBench/tree/main/design2code_uicopilot_gpt-5_20260308_114805",
-      "resolve_base": "https://huggingface.co/datasets/chinh02/WebBench/resolve/main/design2code_uicopilot_gpt-5_20260308_114805"
+      "tree_url": "https://huggingface.co/datasets/chinh02/UIBenchKit/tree/main/design2code_uicopilot_gpt-5_20260308_114805",
+      "resolve_base": "https://huggingface.co/datasets/chinh02/UIBenchKit/resolve/main/design2code_uicopilot_gpt-5_20260308_114805"
     }
   }
 }

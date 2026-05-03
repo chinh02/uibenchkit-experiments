@@ -1,11 +1,11 @@
-# Web-Bench Experiments
+# UIBenchKit Experiments
 
-This repository stores raw experiment data and leaderboard results for web benchmarks.
+This repository stores raw experiment data and leaderboard results for UIBenchKit benchmarks.
 
 ## Repository Structure
 
 ```
-web-bench-experiments/
+uibenchkit-experiments/
 ├── raw-data/                    # Raw experiment outputs
 │   ├── {dataset}_{method}_{model}_{timestamp}/
 │   │   ├── *.html              # Generated HTML files
@@ -71,7 +71,7 @@ The leaderboard website can fetch data directly from this private repository.
    - Go to: GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens
    - Click "Generate new token"
    - Settings:
-     - Token name: `web-bench-leaderboard`
+     - Token name: `uibenchkit-leaderboard`
      - Expiration: Set as needed (recommend 90 days, renew as needed)
      - Repository access: Select "Only select repositories" → choose this repo
      - Permissions: Contents → Read-only
@@ -86,7 +86,7 @@ The leaderboard website can fetch data directly from this private repository.
    | Variable | Value |
    |----------|-------|
    | `GITHUB_TOKEN` | `github_pat_xxxx...` (your token) |
-   | `GITHUB_REPO` | `your-username/web-bench-experiments` |
+   | `GITHUB_REPO` | `your-username/uibenchkit-experiments` |
    | `GITHUB_BRANCH` | `main` |
 
 3. **Update Website Configuration**
