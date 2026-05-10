@@ -1,6 +1,6 @@
 {
   "name": "dcgen",
-  "lastUpdated": "2026-04-30T17:45:04.836340Z",
+  "lastUpdated": "2026-05-10T07:39:38.261446Z",
   "results": [
     {
       "dataset": "dcgen",
@@ -54,7 +54,7 @@
       "fg_clip_all": "87.20%",
       "text_prompt_tokens_per_instance": 46.3,
       "vision_prompt_tokens_per_instance": 660.61,
-      "response_tokens_per_instance": 2616.57,
+      "response_tokens_per_instance": 9114.63,
       "org": "Google",
       "tags": [
         "direct",

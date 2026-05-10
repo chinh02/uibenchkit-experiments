@@ -1,0 +1,13 @@
+﻿{
+    "run_id":  "design2code_direct_gemini-3-pro-preview_20260110_030925",
+    "dataset":  "design2code",
+    "method":  "direct",
+    "model":  "gemini-3-pro-preview",
+    "artifact_source":  "huggingface",
+    "artifact_repo":  "chinh02/UIBenchKit",
+    "artifact_repo_type":  "dataset",
+    "artifact_revision":  "main",
+    "artifact_path":  "raw-data/design2code_direct_gemini-3-pro-preview_20260110_030925",
+    "uibenchkit_version":  "main",
+    "notes":  ""
+}

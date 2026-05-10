@@ -1,0 +1,13 @@
+﻿{
+    "run_id":  "design2code_direct_gpt-4-1_20260110_122031",
+    "dataset":  "design2code",
+    "method":  "direct",
+    "model":  "gpt-4-1",
+    "artifact_source":  "huggingface",
+    "artifact_repo":  "chinh02/UIBenchKit",
+    "artifact_repo_type":  "dataset",
+    "artifact_revision":  "main",
+    "artifact_path":  "raw-data/design2code_direct_gpt-4-1_20260110_122031",
+    "uibenchkit_version":  "main",
+    "notes":  ""
+}

@@ -1,0 +1,13 @@
+﻿{
+    "run_id":  "design2code_direct_claude-3-7-sonnet-20250219_20260118_012948",
+    "dataset":  "design2code",
+    "method":  "direct",
+    "model":  "claude-3-7-sonnet-20250219",
+    "artifact_source":  "huggingface",
+    "artifact_repo":  "chinh02/UIBenchKit",
+    "artifact_repo_type":  "dataset",
+    "artifact_revision":  "main",
+    "artifact_path":  "raw-data/design2code_direct_claude-3-7-sonnet-20250219_20260118_012948",
+    "uibenchkit_version":  "main",
+    "notes":  ""
+}

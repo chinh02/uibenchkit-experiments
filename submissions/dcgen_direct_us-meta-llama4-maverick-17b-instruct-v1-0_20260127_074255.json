@@ -1,0 +1,13 @@
+﻿{
+    "run_id":  "dcgen_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260127_074255",
+    "dataset":  "dcgen",
+    "method":  "direct",
+    "model":  "us-meta-llama4-maverick-17b-instruct-v1-0",
+    "artifact_source":  "huggingface",
+    "artifact_repo":  "chinh02/UIBenchKit",
+    "artifact_repo_type":  "dataset",
+    "artifact_revision":  "main",
+    "artifact_path":  "raw-data/dcgen_direct_us-meta-llama4-maverick-17b-instruct-v1-0_20260127_074255",
+    "uibenchkit_version":  "main",
+    "notes":  ""
+}

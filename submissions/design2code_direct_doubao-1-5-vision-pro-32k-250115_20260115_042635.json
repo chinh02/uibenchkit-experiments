@@ -1,0 +1,13 @@
+﻿{
+    "run_id":  "design2code_direct_doubao-1-5-vision-pro-32k-250115_20260115_042635",
+    "dataset":  "design2code",
+    "method":  "direct",
+    "model":  "doubao-1-5-vision-pro-32k-250115",
+    "artifact_source":  "huggingface",
+    "artifact_repo":  "chinh02/UIBenchKit",
+    "artifact_repo_type":  "dataset",
+    "artifact_revision":  "main",
+    "artifact_path":  "raw-data/design2code_direct_doubao-1-5-vision-pro-32k-250115_20260115_042635",
+    "uibenchkit_version":  "main",
+    "notes":  ""
+}

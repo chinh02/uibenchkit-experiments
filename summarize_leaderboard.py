@@ -28,7 +28,18 @@ import tiktoken
 
 # Configuration
 RAW_DATA_DIR = Path(__file__).parent / "raw-data"
+SUBMISSIONS_DIR = Path(__file__).parent / "submissions"
 OUTPUT_DIR = Path(__file__).parent / "leaderboard"
+HF_CACHE_DIR = Path(__file__).parent / ".cache" / "hf-runs"
+DEFAULT_HF_DATASET_REPO = "chinh02/UIBenchKit"
+DEFAULT_HF_REVISION = "main"
+RUN_JSON_FILES = [
+    "evaluation.json",
+    "run_metadata.json",
+    "results.json",
+    "cost_report.json",
+    "token_details.json",
+]
 
 # Datasets to process
 DATASETS = ["dcgen", "design2code"]
@@ -332,6 +343,162 @@ def read_evaluation_file(eval_path: Path) -> Optional[Dict[str, Any]]:
         return None
 
 
+def read_json_file(path: Path) -> Optional[Dict[str, Any]]:
+    """Read a JSON file if it exists."""
+    try:
+        if not path.exists():
+            return None
+        with open(path, "r", encoding="utf-8-sig") as f:
+            return json.load(f)
+    except Exception as error:
+        print(f"  Warning: Could not parse {path}: {error}")
+        return None
+
+
+def load_submission_manifests() -> List[Dict[str, Any]]:
+    """Load lightweight submission manifests from submissions/*.json."""
+    manifests = []
+    if not SUBMISSIONS_DIR.exists():
+        return manifests
+
+    for path in sorted(SUBMISSIONS_DIR.glob("*.json")):
+        data = read_json_file(path)
+        if not data:
+            continue
+        data["_manifest_path"] = str(path)
+        manifests.append(data)
+
+    return manifests
+
+
+def download_hf_run_manifest(manifest: Dict[str, Any]) -> Optional[Path]:
+    """Download minimal run JSON files from Hugging Face into a local cache."""
+    run_id = manifest.get("run_id")
+    artifact_path = manifest.get("artifact_path")
+    if not run_id or not artifact_path:
+        print("  Skipping manifest: missing run_id or artifact_path")
+        return None
+
+    repo_id = manifest.get("artifact_repo") or DEFAULT_HF_DATASET_REPO
+    revision = manifest.get("artifact_revision") or DEFAULT_HF_REVISION
+    repo_type = manifest.get("artifact_repo_type") or "dataset"
+    cache_root = HF_CACHE_DIR / run_id
+    target_dir = cache_root / artifact_path
+
+    if (target_dir / "evaluation.json").exists():
+        return target_dir
+
+    try:
+        from huggingface_hub import hf_hub_download
+    except ImportError:
+        print(
+            "  Skipping Hugging Face submission: install huggingface_hub "
+            "to download remote artifacts"
+        )
+        return None
+
+    cache_root.mkdir(parents=True, exist_ok=True)
+    downloaded_any = False
+    for filename in RUN_JSON_FILES:
+        hf_filename = f"{artifact_path.rstrip('/')}/{filename}"
+        try:
+            hf_hub_download(
+                repo_id=repo_id,
+                filename=hf_filename,
+                repo_type=repo_type,
+                revision=revision,
+                local_dir=cache_root,
+                local_dir_use_symlinks=False,
+            )
+            downloaded_any = True
+        except Exception as error:
+            if filename == "evaluation.json":
+                print(f"  Warning: could not download required {hf_filename}: {error}")
+            continue
+
+    if not downloaded_any or not (target_dir / "evaluation.json").exists():
+        return None
+
+    return target_dir
+
+
+def resolve_manifest_folder(manifest: Dict[str, Any]) -> Optional[Path]:
+    """Resolve a submission manifest to a local folder containing run JSON files."""
+    run_id = manifest.get("run_id")
+    if not run_id:
+        artifact_path = manifest.get("artifact_path", "")
+        run_id = Path(artifact_path).name if artifact_path else None
+    if not run_id:
+        print("Skipping manifest: missing run_id")
+        return None
+
+    local_raw_folder = RAW_DATA_DIR / run_id
+    if local_raw_folder.exists():
+        return local_raw_folder
+
+    local_path = manifest.get("local_path")
+    if local_path:
+        path = Path(local_path)
+        if not path.is_absolute():
+            path = Path(__file__).parent / path
+        if path.exists():
+            return path
+
+    source = manifest.get("artifact_source", "huggingface")
+    if source == "huggingface":
+        return download_hf_run_manifest(manifest)
+
+    print(f"Skipping {run_id}: unsupported artifact_source={source}")
+    return None
+
+
+def get_experiment_sources() -> List[Dict[str, Any]]:
+    """Return local experiment folders plus manifest-backed folders."""
+    sources_by_run_id: Dict[str, Dict[str, Any]] = {}
+
+    if RAW_DATA_DIR.exists():
+        for folder in RAW_DATA_DIR.iterdir():
+            if not folder.is_dir() or folder.name in {"old_experiments", ".cache"}:
+                continue
+            parsed = parse_run_folder_name(folder.name)
+            if not parsed:
+                continue
+            sources_by_run_id[parsed["run_id"]] = {
+                "folder": folder,
+                "parsed": parsed,
+                "source": "local",
+            }
+
+    for manifest in load_submission_manifests():
+        run_id = manifest.get("run_id")
+        if not run_id:
+            artifact_path = manifest.get("artifact_path", "")
+            run_id = Path(artifact_path).name if artifact_path else None
+        if not run_id or run_id in sources_by_run_id:
+            continue
+
+        parsed = parse_run_folder_name(run_id)
+        if not parsed:
+            parsed = {
+                "dataset": manifest.get("dataset"),
+                "method": manifest.get("method"),
+                "model": manifest.get("model"),
+                "timestamp": manifest.get("timestamp", ""),
+                "run_id": run_id,
+            }
+
+        folder = resolve_manifest_folder(manifest)
+        if folder:
+            sources_by_run_id[run_id] = {
+                "folder": folder,
+                "parsed": parsed,
+                "source": "manifest",
+                "manifest": manifest,
+            }
+
+    return [sources_by_run_id[key] for key in sorted(sources_by_run_id.keys())]
+
+
 def _compute_token_split(folder: Path, cost_data: dict) -> Optional[tuple]:
     """Compute (total_text_tokens, total_vision_tokens) for a run.
 
@@ -366,6 +533,8 @@ def _compute_token_split(folder: Path, cost_data: dict) -> Optional[tuple]:
 
         # Read .html outputs for [CODE] token estimation
         html_files = [f for f in folder.iterdir() if f.suffix == ".html"]
+        if not html_files:
+            return None
         code_tokens_total = 0
         instances_with_html = 0
         for fpath in html_files:
@@ -495,21 +664,8 @@ def extract_token_usage(folder: Path, cost_data: Optional[dict] = None) -> Dict[
     total_response = cost_data.get("token_usage", {}).get("total_response_tokens", 0)
     token_info["response_tokens_per_instance"] = round(total_response / total_instances, 2)
 
-    # Compute text/vision split inline
-    split = _compute_token_split(folder, cost_data)
-    if split is not None:
-        total_text, total_vision = split
-        token_info["text_prompt_tokens_per_instance"] = round(total_text / total_instances, 2)
-        token_info["vision_prompt_tokens_per_instance"] = round(total_vision / total_instances, 2)
-
     token_details_path = folder / "token_details.json"
-    if (
-        token_details_path.exists()
-        and (
-            token_info["text_prompt_tokens_per_instance"] is None
-            or token_info["vision_prompt_tokens_per_instance"] is None
-        )
-    ):
+    if token_details_path.exists():
         try:
             with open(token_details_path, 'r', encoding='utf-8-sig') as f:
                 token_details = json.load(f)
@@ -529,6 +685,19 @@ def extract_token_usage(folder: Path, cost_data: Optional[dict] = None) -> Dict[
                     token_info["vision_prompt_tokens_per_instance"] = round(total_vision / detail_instances, 2)
         except Exception:
             pass
+
+    # Compute text/vision split inline if token_details did not provide it.
+    if (
+        token_info["text_prompt_tokens_per_instance"] is None
+        or token_info["vision_prompt_tokens_per_instance"] is None
+    ):
+        split = _compute_token_split(folder, cost_data)
+        if split is not None:
+            total_text, total_vision = split
+            if token_info["text_prompt_tokens_per_instance"] is None:
+                token_info["text_prompt_tokens_per_instance"] = round(total_text / total_instances, 2)
+            if token_info["vision_prompt_tokens_per_instance"] is None:
+                token_info["vision_prompt_tokens_per_instance"] = round(total_vision / total_instances, 2)
 
     return token_info
 
@@ -603,26 +772,17 @@ def format_metric(value: Optional[float], as_percentage: bool = True) -> str:
 
 
 def process_raw_data() -> Dict[str, List[Dict]]:
-    """Process all raw data folders and extract metrics."""
+    """Process local raw folders and submission manifests, then extract metrics."""
     results = {dataset: [] for dataset in DATASETS}
-    
-    if not RAW_DATA_DIR.exists():
-        print(f"Error: Raw data directory not found: {RAW_DATA_DIR}")
-        return results
-    
-    # Get all experiment folders (excluding old_experiments)
-    folders = [
-        f for f in RAW_DATA_DIR.iterdir() 
-        if f.is_dir() and f.name != "old_experiments"
-    ]
-    
-    print(f"Found {len(folders)} experiment folders")
-    
-    for folder in sorted(folders):
-        print(f"Processing: {folder.name}")
-        
-        # Parse folder name
-        parsed = parse_run_folder_name(folder.name)
+
+    sources = get_experiment_sources()
+    print(f"Found {len(sources)} experiment sources")
+
+    for source in sources:
+        folder = source["folder"]
+        parsed = source["parsed"]
+        print(f"Processing: {parsed['run_id']} ({source['source']})")
+
         if not parsed:
             print(f"  Skipping: Could not parse folder name")
             continue
@@ -786,6 +946,8 @@ def main():
     print("Leaderboard Data Summarizer")
     print("=" * 60)
     print(f"Raw data directory: {RAW_DATA_DIR}")
+    print(f"Submissions directory: {SUBMISSIONS_DIR}")
+    print(f"Hugging Face cache directory: {HF_CACHE_DIR}")
     print(f"Output directory: {OUTPUT_DIR}")
     print()
     

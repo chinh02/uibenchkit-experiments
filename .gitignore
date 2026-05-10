@@ -1,6 +1,8 @@
 # Local Netlify folder
 .netlify
-raw-data
+.cache/
+raw-data/*
+!raw-data/README.md
 dcgen-layoutcoder-gpt5
 design2code-layoutcoder-gpt5
 convert_layoutcoder.py

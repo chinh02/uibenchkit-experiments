@@ -1,0 +1,13 @@
+﻿{
+    "run_id":  "design2code_layoutcoder_gpt-5_20260101_000000",
+    "dataset":  "design2code",
+    "method":  "layoutcoder",
+    "model":  "gpt-5",
+    "artifact_source":  "huggingface",
+    "artifact_repo":  "chinh02/UIBenchKit",
+    "artifact_repo_type":  "dataset",
+    "artifact_revision":  "main",
+    "artifact_path":  "raw-data/design2code_layoutcoder_gpt-5_20260101_000000",
+    "uibenchkit_version":  "main",
+    "notes":  ""
+}

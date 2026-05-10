@@ -1,0 +1,13 @@
+﻿{
+    "run_id":  "dcgen_latcoder_gpt-5_20260212_022005",
+    "dataset":  "dcgen",
+    "method":  "latcoder",
+    "model":  "gpt-5",
+    "artifact_source":  "huggingface",
+    "artifact_repo":  "chinh02/UIBenchKit",
+    "artifact_repo_type":  "dataset",
+    "artifact_revision":  "main",
+    "artifact_path":  "raw-data/dcgen_latcoder_gpt-5_20260212_022005",
+    "uibenchkit_version":  "main",
+    "notes":  ""
+}
