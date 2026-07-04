@@ -1,13 +1,13 @@
-{
-  "run_id": "dcgen_direct_doubao-1-5-vision-pro-32k-250115_20260116_030003",
-  "dataset": "dcgen",
-  "method": "direct",
-  "model": "doubao-1-5-vision-pro-32k-250115",
-  "artifact_source": "huggingface",
-  "artifact_repo": "chinh02/UIBenchKit",
-  "artifact_repo_type": "dataset",
-  "artifact_revision": "a107b7da78ce3c15c6bd5b204e3bcc9024b9a76e",
-  "artifact_path": "dcgen_direct_doubao-1-5-vision-pro-32k-250115_20260116_030003",
-  "uibenchkit_version": "main",
-  "notes": ""
+﻿{
+    "run_id":  "dcgen_direct_doubao-1-5-vision-pro-32k-250115_20260116_030003",
+    "dataset":  "dcgen",
+    "method":  "direct",
+    "model":  "doubao-1-5-vision-pro-32k-250115",
+    "artifact_source":  "huggingface",
+    "artifact_repo":  "chinh02/UIBenchKit",
+    "artifact_repo_type":  "dataset",
+    "artifact_revision":  "a107b7da78ce3c15c6bd5b204e3bcc9024b9a76e",
+    "artifact_path":  "dcgen_direct_doubao-1-5-vision-pro-32k-250115_20260116_030003",
+    "uibenchkit_version":  "main",
+    "notes":  ""
 }

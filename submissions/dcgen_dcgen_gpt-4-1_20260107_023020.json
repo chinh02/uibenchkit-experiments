@@ -1,13 +1,13 @@
-{
-  "run_id": "dcgen_dcgen_gpt-4-1_20260107_023020",
-  "dataset": "dcgen",
-  "method": "dcgen",
-  "model": "gpt-4-1",
-  "artifact_source": "huggingface",
-  "artifact_repo": "chinh02/UIBenchKit",
-  "artifact_repo_type": "dataset",
-  "artifact_revision": "a107b7da78ce3c15c6bd5b204e3bcc9024b9a76e",
-  "artifact_path": "dcgen_dcgen_gpt-4-1_20260107_023020",
-  "uibenchkit_version": "main",
-  "notes": ""
+﻿{
+    "run_id":  "dcgen_dcgen_gpt-4-1_20260107_023020",
+    "dataset":  "dcgen",
+    "method":  "dcgen",
+    "model":  "gpt-4-1",
+    "artifact_source":  "huggingface",
+    "artifact_repo":  "chinh02/UIBenchKit",
+    "artifact_repo_type":  "dataset",
+    "artifact_revision":  "a107b7da78ce3c15c6bd5b204e3bcc9024b9a76e",
+    "artifact_path":  "dcgen_dcgen_gpt-4-1_20260107_023020",
+    "uibenchkit_version":  "main",
+    "notes":  ""
 }

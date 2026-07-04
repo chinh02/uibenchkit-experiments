@@ -1,13 +1,13 @@
-{
-  "run_id": "design2code_direct_grok-4_20260123_044312",
-  "dataset": "design2code",
-  "method": "direct",
-  "model": "grok-4",
-  "artifact_source": "huggingface",
-  "artifact_repo": "chinh02/UIBenchKit",
-  "artifact_repo_type": "dataset",
-  "artifact_revision": "a107b7da78ce3c15c6bd5b204e3bcc9024b9a76e",
-  "artifact_path": "design2code_direct_grok-4_20260123_044312",
-  "uibenchkit_version": "main",
-  "notes": ""
+﻿{
+    "run_id":  "design2code_direct_grok-4_20260123_044312",
+    "dataset":  "design2code",
+    "method":  "direct",
+    "model":  "grok-4",
+    "artifact_source":  "huggingface",
+    "artifact_repo":  "chinh02/UIBenchKit",
+    "artifact_repo_type":  "dataset",
+    "artifact_revision":  "a107b7da78ce3c15c6bd5b204e3bcc9024b9a76e",
+    "artifact_path":  "design2code_direct_grok-4_20260123_044312",
+    "uibenchkit_version":  "main",
+    "notes":  ""
 }

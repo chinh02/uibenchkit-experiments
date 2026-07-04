@@ -1,13 +1,13 @@
-{
-  "run_id": "design2code_direct_claude-opus-4-5-20251101_20260124_031629",
-  "dataset": "design2code",
-  "method": "direct",
-  "model": "claude-opus-4-5-20251101",
-  "artifact_source": "huggingface",
-  "artifact_repo": "chinh02/UIBenchKit",
-  "artifact_repo_type": "dataset",
-  "artifact_revision": "a107b7da78ce3c15c6bd5b204e3bcc9024b9a76e",
-  "artifact_path": "design2code_direct_claude-opus-4-5-20251101_20260124_031629",
-  "uibenchkit_version": "main",
-  "notes": ""
+﻿{
+    "run_id":  "design2code_direct_claude-opus-4-5-20251101_20260124_031629",
+    "dataset":  "design2code",
+    "method":  "direct",
+    "model":  "claude-opus-4-5-20251101",
+    "artifact_source":  "huggingface",
+    "artifact_repo":  "chinh02/UIBenchKit",
+    "artifact_repo_type":  "dataset",
+    "artifact_revision":  "a107b7da78ce3c15c6bd5b204e3bcc9024b9a76e",
+    "artifact_path":  "design2code_direct_claude-opus-4-5-20251101_20260124_031629",
+    "uibenchkit_version":  "main",
+    "notes":  ""
 }
