@@ -839,6 +839,7 @@ def process_raw_data() -> Dict[str, List[Dict]]:
             "method": parsed["method"],
             "model": parsed["model"],
             "run_id": parsed["run_id"],
+            "run_timestamp": parsed["timestamp"],
             **model_date_info,
             **metrics,
             **token_usage,
@@ -876,7 +877,12 @@ def save_csv(data: List[Dict], output_path: Path):
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
     with open(output_path, 'w', newline='', encoding='utf-8') as f:
-        writer = csv.DictWriter(f, fieldnames=columns, extrasaction='ignore')
+        writer = csv.DictWriter(
+            f,
+            fieldnames=columns,
+            extrasaction='ignore',
+            lineterminator='\n',
+        )
         writer.writeheader()
         writer.writerows(sorted_data)
     
@@ -926,9 +932,17 @@ def save_json(data: List[Dict], dataset: str, output_path: Path):
         }
         results.append(result)
     
+    run_timestamps = [
+        datetime.strptime(entry["run_timestamp"], "%Y%m%d_%H%M%S").replace(
+            tzinfo=timezone.utc
+        )
+        for entry in data
+    ]
+    last_updated = max(run_timestamps).isoformat().replace("+00:00", "Z")
+
     output_data = {
         "name": dataset,
-        "lastUpdated": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        "lastUpdated": last_updated,
         "results": results,
     }
     
