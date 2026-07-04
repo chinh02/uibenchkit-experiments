@@ -32,7 +32,7 @@ SUBMISSIONS_DIR = Path(__file__).parent / "submissions"
 OUTPUT_DIR = Path(__file__).parent / "leaderboard"
 HF_CACHE_DIR = Path(__file__).parent / ".cache" / "hf-runs"
 DEFAULT_HF_DATASET_REPO = "chinh02/UIBenchKit"
-DEFAULT_HF_REVISION = "main"
+DEFAULT_HF_REVISION = "a107b7da78ce3c15c6bd5b204e3bcc9024b9a76e"
 RUN_JSON_FILES = [
     "evaluation.json",
     "run_metadata.json",

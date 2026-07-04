@@ -6,8 +6,8 @@
     "artifact_source":  "huggingface",
     "artifact_repo":  "chinh02/UIBenchKit",
     "artifact_repo_type":  "dataset",
-    "artifact_revision":  "main",
-    "artifact_path":  "raw-data/dcgen_direct_claude-3-7-sonnet-20250219_20260117_025333",
+    "artifact_revision":  "a107b7da78ce3c15c6bd5b204e3bcc9024b9a76e",
+    "artifact_path":  "dcgen_direct_claude-3-7-sonnet-20250219_20260117_025333",
     "uibenchkit_version":  "main",
     "notes":  ""
 }
