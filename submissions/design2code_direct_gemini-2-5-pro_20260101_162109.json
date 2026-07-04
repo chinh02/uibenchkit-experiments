@@ -1,13 +1,13 @@
-﻿{
-    "run_id":  "design2code_direct_gemini-2-5-pro_20260101_162109",
-    "dataset":  "design2code",
-    "method":  "direct",
-    "model":  "gemini-2-5-pro",
-    "artifact_source":  "huggingface",
-    "artifact_repo":  "chinh02/UIBenchKit",
-    "artifact_repo_type":  "dataset",
-    "artifact_revision":  "main",
-    "artifact_path":  "raw-data/design2code_direct_gemini-2-5-pro_20260101_162109",
-    "uibenchkit_version":  "main",
-    "notes":  ""
+{
+  "run_id": "design2code_direct_gemini-2-5-pro_20260101_162109",
+  "dataset": "design2code",
+  "method": "direct",
+  "model": "gemini-2-5-pro",
+  "artifact_source": "huggingface",
+  "artifact_repo": "chinh02/UIBenchKit",
+  "artifact_repo_type": "dataset",
+  "artifact_revision": "a107b7da78ce3c15c6bd5b204e3bcc9024b9a76e",
+  "artifact_path": "design2code_direct_gemini-2-5-pro_20260101_162109",
+  "uibenchkit_version": "main",
+  "notes": ""
 }

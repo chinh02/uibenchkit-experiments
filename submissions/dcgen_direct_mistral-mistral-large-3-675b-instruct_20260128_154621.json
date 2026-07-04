@@ -1,13 +1,13 @@
-﻿{
-    "run_id":  "dcgen_direct_mistral-mistral-large-3-675b-instruct_20260128_154621",
-    "dataset":  "dcgen",
-    "method":  "direct",
-    "model":  "mistral-mistral-large-3-675b-instruct",
-    "artifact_source":  "huggingface",
-    "artifact_repo":  "chinh02/UIBenchKit",
-    "artifact_repo_type":  "dataset",
-    "artifact_revision":  "main",
-    "artifact_path":  "raw-data/dcgen_direct_mistral-mistral-large-3-675b-instruct_20260128_154621",
-    "uibenchkit_version":  "main",
-    "notes":  ""
+{
+  "run_id": "dcgen_direct_mistral-mistral-large-3-675b-instruct_20260128_154621",
+  "dataset": "dcgen",
+  "method": "direct",
+  "model": "mistral-mistral-large-3-675b-instruct",
+  "artifact_source": "huggingface",
+  "artifact_repo": "chinh02/UIBenchKit",
+  "artifact_repo_type": "dataset",
+  "artifact_revision": "a107b7da78ce3c15c6bd5b204e3bcc9024b9a76e",
+  "artifact_path": "dcgen_direct_mistral-mistral-large-3-675b-instruct_20260128_154621",
+  "uibenchkit_version": "main",
+  "notes": ""
 }

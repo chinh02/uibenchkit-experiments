@@ -33,7 +33,7 @@ The data flow is:
 
 ```text
 UIBenchKit run artifacts
-  -> Hugging Face dataset: chinh02/UIBenchKit/raw-data/<run_id>/
+  -> Hugging Face dataset: chinh02/UIBenchKit/<run_id>/
   -> submissions/<run_id>.json
   -> python summarize_leaderboard.py
   -> leaderboard/*.csv and leaderboard/*.json
@@ -67,7 +67,7 @@ Each submitted run must have a corresponding artifact folder on Hugging Face.
 The Hugging Face artifact path should follow:
 
 ```text
-raw-data/<dataset>_<method>_<model>_<YYYYMMDD>_<HHMMSS>
+<dataset>_<method>_<model>_<YYYYMMDD>_<HHMMSS>
 ```
 
 Examples:
@@ -149,8 +149,8 @@ Example:
   "artifact_source": "huggingface",
   "artifact_repo": "chinh02/UIBenchKit",
   "artifact_repo_type": "dataset",
-  "artifact_revision": "main",
-  "artifact_path": "raw-data/dcgen_direct_gemini-3-pro-preview_20260110_030916",
+  "artifact_revision": "a107b7da78ce3c15c6bd5b204e3bcc9024b9a76e",
+  "artifact_path": "dcgen_direct_gemini-3-pro-preview_20260110_030916",
   "uibenchkit_version": "main",
   "notes": ""
 }
