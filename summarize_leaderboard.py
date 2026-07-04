@@ -877,7 +877,12 @@ def save_csv(data: List[Dict], output_path: Path):
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
     with open(output_path, 'w', newline='', encoding='utf-8') as f:
-        writer = csv.DictWriter(f, fieldnames=columns, extrasaction='ignore')
+        writer = csv.DictWriter(
+            f,
+            fieldnames=columns,
+            extrasaction='ignore',
+            lineterminator='\n',
+        )
         writer.writeheader()
         writer.writerows(sorted_data)
     
