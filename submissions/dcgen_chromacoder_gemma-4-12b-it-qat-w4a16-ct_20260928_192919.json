@@ -1,0 +1,13 @@
+{
+    "run_id":  "dcgen_chromacoder_gemma-4-12b-it-qat-w4a16-ct_20260928_192919",
+    "dataset":  "dcgen",
+    "method":  "chromacoder",
+    "model":  "gemma-4-12b-it-qat-w4a16-ct",
+    "artifact_source":  "huggingface",
+    "artifact_repo":  "JaniceFu/ChromaCoder",
+    "artifact_repo_type":  "dataset",
+    "artifact_revision":  "b22924079fea8e6985a718ae4231912aa05dd5ce",
+    "artifact_path":  "dcgen_chromacoder_gemma-4-12b-it-qat-w4a16-ct_20260928_192919",
+    "uibenchkit_version":  "main",
+    "notes":  "W4A16 QAT (4-bit weights, 16-bit activations, group_size=32) via compressed-tensors."
+}

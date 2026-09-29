@@ -1,6 +1,6 @@
 {
   "name": "dcgen",
-  "lastUpdated": "2026-03-10T06:31:55Z",
+  "lastUpdated": "2026-09-28T19:29:19Z",
   "results": [
     {
       "dataset": "dcgen",
@@ -31,6 +31,35 @@
         "Claude"
       ],
       "run_id": "dcgen_direct_claude-3-7-sonnet-20250219_20260117_025333"
+    },
+    {
+      "dataset": "dcgen",
+      "method": "chromacoder",
+      "model": "Gemma-4-12B-IT-QAT",
+      "model_date": "2026-09-28",
+      "model_date_source": "run_timestamp",
+      "code_similarity": "12.97%",
+      "clip": "86.89%",
+      "block_match": "71.89%",
+      "text": "90.60%",
+      "position": "76.45%",
+      "color": "83.39%",
+      "fg_clip": "88.89%",
+      "clip_all": "86.89%",
+      "code_similarity_all": "12.97%",
+      "block_match_all": "71.48%",
+      "text_all": "90.08%",
+      "position_all": "76.01%",
+      "color_all": "82.91%",
+      "fg_clip_all": "88.38%",
+      "text_prompt_tokens_per_instance": null,
+      "vision_prompt_tokens_per_instance": null,
+      "response_tokens_per_instance": 3073.11,
+      "org": "Google",
+      "tags": [
+        "chromacoder"
+      ],
+      "run_id": "dcgen_chromacoder_gemma-4-12b-it-qat-w4a16-ct_20260928_192919"
     },
     {
       "dataset": "dcgen",

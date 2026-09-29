@@ -62,6 +62,7 @@ MODEL_DISPLAY_NAMES = {
     "mistral-mistral-large-3-675b-instruct": "Mistral-Large-3",
     "us-meta-llama4-maverick-17b-instruct-v1-0": "Llama4-Maverick-17B",
     "qwen-qwen3-vl-235b-a22b": "Qwen3-VL-235B",
+    "gemma-4-12b-it-qat-w4a16-ct": "Gemma-4-12B-IT-QAT",
 }
 
 # Organization mapping
@@ -74,6 +75,7 @@ MODEL_ORGANIZATIONS = {
     "mistral": "Mistral AI",
     "llama": "Meta",
     "qwen": "Alibaba",
+    "gemma": "Google",
 }
 
 # ============================================================
